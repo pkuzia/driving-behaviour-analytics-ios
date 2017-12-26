@@ -15,8 +15,23 @@ pod 'Realm', '~> 2.1'
 pod 'ObjectMapper+Realm'
 pod 'Moya-ObjectMapper'
 pod 'RealmSwift'
-pod 'Moya', '8.0.0'
+pod 'Moya', '~> 8.0'
 
+# # App Logic
+
+pod "OBD2-Swift"
+
+post_install do |installer|
+	swift40Targets = ['SwifterSwift']
+	
+	installer.pods_project.targets.each do |target|
+		if swift40Targets.include? target.name
+			target.build_configurations.each do |config|
+				config.build_settings['SWIFT_VERSION'] = '4.0'
+			end
+		end
+	end
+end
 target 'Driving behaviour analyzer' do
 
 end

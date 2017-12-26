@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xVJ-ds-P5Y">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Menu Screen View Controller-->
+        <scene sceneID="8tR-lX-lcI">
+            <objects>
+                <viewController id="xVJ-ds-P5Y" customClass="MenuScreenViewController" customModule="Driving_behaviour_analyzer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C2C-Kg-0rU"/>
+                        <viewControllerLayoutGuide type="bottom" id="neL-4J-frV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DYw-1G-hYE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MenuBackground" translatesAutoresizingMaskIntoConstraints="NO" id="oh7-52-bvz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXf-HW-fNB">
+                                <rect key="frame" x="37" y="483.5" width="300" height="50"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickCollectButtonHandler:" destination="xVJ-ds-P5Y" eventType="touchUpInside" id="tjo-HA-ZG8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sak-F7-fw6">
+                                <rect key="frame" x="37" y="408.5" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YDT-KU-Lj2"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gXf-HW-fNB" firstAttribute="height" secondItem="Sak-F7-fw6" secondAttribute="height" id="8hY-WO-qGh"/>
+                            <constraint firstAttribute="trailing" secondItem="oh7-52-bvz" secondAttribute="trailing" id="B8L-Of-QKi"/>
+                            <constraint firstItem="Sak-F7-fw6" firstAttribute="width" secondItem="oh7-52-bvz" secondAttribute="width" multiplier="0.8" id="Mj0-a7-2Ho"/>
+                            <constraint firstItem="Sak-F7-fw6" firstAttribute="centerX" secondItem="oh7-52-bvz" secondAttribute="centerX" id="RZ1-Oy-yeM"/>
+                            <constraint firstItem="oh7-52-bvz" firstAttribute="leading" secondItem="DYw-1G-hYE" secondAttribute="leading" id="UpS-O5-YXs"/>
+                            <constraint firstItem="neL-4J-frV" firstAttribute="top" secondItem="oh7-52-bvz" secondAttribute="bottom" id="V4W-ud-hsD"/>
+                            <constraint firstItem="gXf-HW-fNB" firstAttribute="top" secondItem="Sak-F7-fw6" secondAttribute="bottom" constant="25" id="ZRX-lF-YU9"/>
+                            <constraint firstItem="oh7-52-bvz" firstAttribute="top" secondItem="DYw-1G-hYE" secondAttribute="top" id="duH-p3-6Ra"/>
+                            <constraint firstItem="gXf-HW-fNB" firstAttribute="width" secondItem="Sak-F7-fw6" secondAttribute="width" id="fNp-A3-nJy"/>
+                            <constraint firstItem="gXf-HW-fNB" firstAttribute="centerX" secondItem="Sak-F7-fw6" secondAttribute="centerX" id="gIV-No-ZTj"/>
+                            <constraint firstItem="Sak-F7-fw6" firstAttribute="centerY" secondItem="oh7-52-bvz" secondAttribute="centerY" multiplier="1.3" id="mR0-kS-ba9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="analyzeButton" destination="Sak-F7-fw6" id="qWx-vC-ZTK"/>
+                        <outlet property="collectButton" destination="gXf-HW-fNB" id="b5Z-PT-xNb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxF-VT-NRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109.59999999999999" y="-231.63418290854574"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MenuBackground" width="375" height="667"/>
+    </resources>
+</document>

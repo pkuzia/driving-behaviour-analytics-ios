@@ -1,0 +1,67 @@
+PODS:
+  - Alamofire (4.6.0)
+  - Kingfisher (3.13.1)
+  - Moya (8.0.5):
+    - Moya/Core (= 8.0.5)
+  - Moya-ObjectMapper (2.4):
+    - Moya-ObjectMapper/Core (= 2.4)
+  - Moya-ObjectMapper/Core (2.4):
+    - Moya (~> 8.0)
+    - ObjectMapper (~> 2.2)
+  - Moya/Core (8.0.5):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - OBD2-Swift (0.1.2)
+  - ObjectMapper (2.2.9)
+  - ObjectMapper+Realm (0.5):
+    - ObjectMapper
+    - RealmSwift
+  - Realm (2.10.2):
+    - Realm/Headers (= 2.10.2)
+  - Realm/Headers (2.10.2)
+  - RealmSwift (2.10.2):
+    - Realm (= 2.10.2)
+  - Result (3.2.4)
+  - SwifterSwift (4.1.0):
+    - SwifterSwift/AppKit (= 4.1.0)
+    - SwifterSwift/CoreGraphics (= 4.1.0)
+    - SwifterSwift/CoreLocation (= 4.1.0)
+    - SwifterSwift/Foundation (= 4.1.0)
+    - SwifterSwift/SwiftStdlib (= 4.1.0)
+    - SwifterSwift/UIKit (= 4.1.0)
+  - SwifterSwift/AppKit (4.1.0)
+  - SwifterSwift/CoreGraphics (4.1.0)
+  - SwifterSwift/CoreLocation (4.1.0)
+  - SwifterSwift/Foundation (4.1.0)
+  - SwifterSwift/SwiftStdlib (4.1.0)
+  - SwifterSwift/UIKit (4.1.0)
+  - SwiftLint (0.24.0)
+
+DEPENDENCIES:
+  - Kingfisher (~> 3.0)
+  - Moya (~> 8.0)
+  - Moya-ObjectMapper
+  - OBD2-Swift
+  - ObjectMapper+Realm
+  - Realm (~> 2.1)
+  - RealmSwift
+  - SwifterSwift
+  - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Kingfisher: ed9707a409cc47fddafbcd12a43a9757e3600af5
+  Moya: c37eec09a098ba9991b5a963b291fc5704bdb9ef
+  Moya-ObjectMapper: 5807a3f30fea8fd07a9fc0e324cda1655e1602ab
+  OBD2-Swift: 073ec7c33eaaa329c8f950fdb9a8c1093d8e9ab9
+  ObjectMapper: 63cfe41bc6f8e7c8f44344c49901b8ae7de14c52
+  ObjectMapper+Realm: 3188789fb77c189c7a83cb625333a607eb61a08f
+  Realm: 0ef72b837fb67e9f4b098bac771ddd72c7fdbb69
+  RealmSwift: 07a9ae0505091eda6b2ee7c190c3786d6e90a7b0
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  SwifterSwift: 4d962b5d653760b85266832aff6ab6d08c1b7974
+  SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
+
+PODFILE CHECKSUM: f62c13613bfe6ef4936ccff842a1f44b72c21a29
+
+COCOAPODS: 1.2.0
