@@ -11,11 +11,11 @@ import UIKit
 import SwifterSwift
 
 public enum Attribute {
-    case menuButton
+    case menuButton, collectParameterLabel, collectStateLabel
 }
 
 public enum Color {
-    case baseBlueColor
+    case baseBlueColor, baseGreenColor, baseNavyBlueColor, baseGrayColor
 }
 
 
@@ -27,15 +27,29 @@ class StyleKit {
         var attributedDictionary = [String: AnyObject]()
         switch attribute {
         case .menuButton:
-            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightThin))
+            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightLight))
+        case .collectParameterLabel:
+            attributedDictionary = attributedText(color: colorType(color: .baseGrayColor), font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightLight))
+        case .collectStateLabel:
+            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 20 , weight: UIFontWeightLight))
         }
         return NSAttributedString(string: text, attributes: attributedDictionary)
+    }
+    
+    static func navBarAttributes() -> [String: Any] {
+        return attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 21, weight: UIFontWeightLight))
     }
     
     static func colorType(color: Color) -> UIColor {
         switch color {
         case .baseBlueColor:
-            return UIColor(hexString: "#24CDDE")!
+            return UIColor(hexString: "#2D3D54")!
+        case .baseGreenColor:
+            return UIColor(hexString: "#5EC6B9")!
+        case .baseNavyBlueColor:
+            return UIColor(hexString: "#2F3C51")!
+        case .baseGrayColor:
+            return UIColor(hexString: "#AFB6C0")!
         }
     }
 

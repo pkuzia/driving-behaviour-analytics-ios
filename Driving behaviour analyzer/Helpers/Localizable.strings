@@ -10,3 +10,17 @@
 
 "analyze_button_title" = "Analyze ride";
 "collect_button_title" = "Collect data";
+
+/* Collect screen */
+
+"collect_screen_title" = "Collect data";
+
+"vehicle_speed_label" = "Vehicle speed";
+"engine_load_label" = "Engine load";
+"engine_speed_label" = "Engine speed";
+"torque_label" = "Torque";
+
+"connection_state_not_connected" = "Not Connected";
+"connection_state_connected" = "Connected";
+"connection_state_opening_connection" = "Opening connection";
+"connection_state_initializing" = "Initializing";

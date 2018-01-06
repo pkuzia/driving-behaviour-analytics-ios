@@ -40,13 +40,13 @@ class MenuScreenViewController: BaseViewController {
     // MARK: - Appearance
     
     func initUI() {
-        analyzeButton.backgroundColor = StyleKit.colorType(color: .baseBlueColor)
-        analyzeButton.layer.cornerRadius = analyzeButton.frame.height / 2
+        analyzeButton.setBackgroundImage(UIImage(named: "gradient"), for: .normal)
+        analyzeButton.layer.cornerRadius = 5
         analyzeButton.setAttributedTitle(StyleKit.attributedText(text: menuScreenViewModel.analyzeButtonTitle,
                                                                  attribute: .menuButton), for: .normal)
         
-        collectButton.backgroundColor = StyleKit.colorType(color: .baseBlueColor)
-        collectButton.layer.cornerRadius = analyzeButton.frame.height / 2
+        collectButton.setBackgroundImage(UIImage(named: "gradient"), for: .normal)
+        collectButton.layer.cornerRadius = 5
         collectButton.setAttributedTitle(StyleKit.attributedText(text: menuScreenViewModel.collectButtonTitle,
                                                                  attribute: .menuButton), for: .normal)
     }

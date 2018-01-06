@@ -9,6 +9,10 @@
 import Foundation
 import OBD2
 
+protocol OBDIIServiceDelegate {
+    func stateChanged(state: ScanState)
+}
+
 class OBDIIService: BaseService {
     
     // MARK: - Variables
@@ -17,6 +21,7 @@ class OBDIIService: BaseService {
     let port = 35000
     
     let obd = OBD2()
+    var obdIIServiceDelegate: OBDIIServiceDelegate?
     
     // MARK: - Functions
     
@@ -25,7 +30,6 @@ class OBDIIService: BaseService {
         
         observer.observe(command: .pid(number: 4)) { (descriptor) in
             let respStr = descriptor?.shortDescription
-            descriptor.
             print(descriptor?.valueMetrics)
         }
         
@@ -68,25 +72,6 @@ class OBDIIService: BaseService {
     }
     
     fileprivate func onOBD(change state: ScanState) {
-        switch state {
-        case .none:
-//            indicator.stopAnimating()
-//            statusLabel.text = "Not Connected"
-//            updateUI(connected: false)
-            break
-        case .connected:
-//            indicator.stopAnimating()
-//            statusLabel.text = "Connected"
-//            updateUI(connected: true)
-            break
-        case .openingConnection:
-//            connectButton.isHidden = true
-//            indicator.startAnimating()
-//            statusLabel.text = "Opening connection"
-            break
-        case .initializing:
-//            statusLabel.text = "Initializing"
-            break
-        }
+        obdIIServiceDelegate?.stateChanged(state: state)
     }
 }
