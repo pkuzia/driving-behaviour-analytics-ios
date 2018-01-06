@@ -95,11 +95,12 @@ class CollectScreenViewController: BaseViewController {
     // MARK: - User Interaction
     
     @IBAction func clickActionButtonHandler(_ sender: Any) {
-        collectScreenViewModel.obdIIService.connectOBD()
-    }
-    
-    @IBAction func exReq(_ sender: Any) {
-        collectScreenViewModel.obdIIService.requestSpeed()
+        switch collectScreenViewModel.connectionState {
+        case .notConnected:
+            collectScreenViewModel.obdIIService.connectOBD()
+        case .connected:
+            collectScreenViewModel.obdIIService.requestParameters()
+        }
     }
     
     func clickMenuButtonHandler() {
@@ -129,6 +130,7 @@ extension CollectScreenViewController: OBDIIServiceDelegate {
         case .connected:
             infoLabel.attributedText = StyleKit.attributedText(text: collectScreenViewModel.connectionStateConnected,
                                                                attribute: .collectStateLabel)
+            collectScreenViewModel.connectionState = .connected
             break
         case .openingConnection:
             infoLabel.attributedText = StyleKit.attributedText(text: collectScreenViewModel.connectionStateOpeningConnection,
@@ -138,6 +140,22 @@ extension CollectScreenViewController: OBDIIServiceDelegate {
             infoLabel.attributedText = StyleKit.attributedText(text: collectScreenViewModel.connectionStateInit,
                                                                attribute: .collectStateLabel)
             break
+        }
+    }
+    func valueRecieved(type: DataType, value: String) {
+        DispatchQueue.main.async {
+            switch type {
+            case .engineLoad:
+                self.engineLoadValue.attributedText = StyleKit.attributedText(text: value, attribute: .collectParameterLabel)
+            case .engineSpeed:
+                self.engineSpeedValue.attributedText = StyleKit.attributedText(text: value, attribute: .collectParameterLabel)
+            case .vehicleSpeed:
+                self.vehicleSpeedValue.attributedText = StyleKit.attributedText(text: value, attribute: .collectParameterLabel)
+            case .torque:
+                self.torqueValue.attributedText = StyleKit.attributedText(text: value, attribute: .collectParameterLabel)
+            default:
+                break
+            }
         }
     }
 }

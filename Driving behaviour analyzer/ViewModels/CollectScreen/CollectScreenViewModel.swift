@@ -12,6 +12,10 @@ protocol CollectScreenViewModelDelegate: class {
     
 }
 
+enum ConnectionState {
+    case notConnected, connected
+}
+
 class CollectScreenViewModel: BaseViewModel {
     
     // MARK: - Strings
@@ -35,6 +39,7 @@ class CollectScreenViewModel: BaseViewModel {
     let obdIIService = OBDIIService()
     
     weak var delegate: CollectScreenViewModelDelegate?
+    var connectionState: ConnectionState = .notConnected
     
     // MARK: - Functions
 }

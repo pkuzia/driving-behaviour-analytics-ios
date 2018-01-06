@@ -8,9 +8,11 @@
 
 import Foundation
 import OBD2
+import RealmSwift
 
 protocol OBDIIServiceDelegate {
     func stateChanged(state: ScanState)
+    func valueRecieved(type: DataType, value: String)
 }
 
 class OBDIIService: BaseService {
@@ -28,9 +30,24 @@ class OBDIIService: BaseService {
     func initOBD() {
         let observer = Observer<Command.Mode01>()
         
-        observer.observe(command: .pid(number: 4)) { (descriptor) in
-            let respStr = descriptor?.shortDescription
-            print(descriptor?.valueMetrics)
+        /* Observer for params */
+        observer.observe(command: .pid(number: 13)) { descriptor in
+            print("Vehicle speed: \(descriptor?.valueMetrics)")
+            self.saveToDB(dataType: .vehicleSpeed, value: descriptor?.valueMetrics)
+        }
+        observer.observe(command: .pid(number: 12)) { descriptor in
+            print("RPM: \(descriptor?.valueMetrics)")
+            self.saveToDB(dataType: .engineSpeed, value: descriptor?.valueMetrics)
+        }
+        
+        observer.observe(command: .pid(number: 4)) { descriptor in
+            print("Engine load: \(descriptor?.valueMetrics)")
+            self.saveToDB(dataType: .engineLoad, value: descriptor?.valueMetrics)
+        }
+        
+        observer.observe(command: .pid(number: 99)) { descriptor in
+            print("Torque: \(descriptor?.valueMetrics)")
+            self.saveToDB(dataType: .torque, value: descriptor?.valueMetrics)
         }
         
         ObserverQueue.shared.register(observer: observer)
@@ -50,13 +67,37 @@ class OBDIIService: BaseService {
         obd.resumeScan()
     }
     
-    func requestSpeed() {
-        let command = Command.Mode01.pid(number: 4)
+    func requestParameters() {
+        
+        /* Vehicle speed */
+        var command = Command.Mode01.pid(number: 13)
         if obd.isRepeating(repeat: command) {
-//            sender.setTitle("Start repeat speed", for: .normal)
             obd.stop(repeat: command)
         } else {
-//            sender.setTitle("Stop repeat", for: .normal)
+            obd.request(repeat: command)
+        }
+        
+        /* Engine speed */
+        command = Command.Mode01.pid(number: 12)
+        if obd.isRepeating(repeat: command) {
+            obd.stop(repeat: command)
+        } else {
+            obd.request(repeat: command)
+        }
+
+        /* Engine load */
+        command = Command.Mode01.pid(number: 4)
+        if obd.isRepeating(repeat: command) {
+            obd.stop(repeat: command)
+        } else {
+            obd.request(repeat: command)
+        }
+
+        /* Torque */
+        command = Command.Mode01.pid(number: 99)
+        if obd.isRepeating(repeat: command) {
+            obd.stop(repeat: command)
+        } else {
             obd.request(repeat: command)
         }
     }
@@ -68,6 +109,26 @@ class OBDIIService: BaseService {
                     print("OBD connection failed with \(error)")
                 }
             })
+        }
+    }
+    
+    
+    fileprivate func saveToDB(dataType: DataType, value: Float?) {
+        if let value = value {
+            
+            let driveItemData = DriveItemData()
+            driveItemData.dataTypeEnum = dataType
+            driveItemData.value = value
+            driveItemData.timestamp = Int(NSDate().timeIntervalSince1970 * 1000.0)
+            obdIIServiceDelegate?.valueRecieved(type: dataType, value: String(value))
+//            do {
+//                let realm = try Realm()
+//                try realm.write {
+//                    realm.add(driveItemData)
+//                }
+//            } catch _ {
+//
+//            }
         }
     }
     
