@@ -14,7 +14,7 @@ enum DataType: String {
     case engineLoad = "EngineLoad"
     case engineSpeed = "EngineSpeed"
     case vehicleSpeed = "VehicleSpeed"
-    case torque = "Torque"
+    case fuelRailPressure = "Fuel Rail Pressure"
     case undefined = "Undefined"
 }
 

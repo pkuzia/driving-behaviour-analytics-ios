@@ -45,9 +45,9 @@ class OBDIIService: BaseService {
             self.saveToDB(dataType: .engineLoad, value: descriptor?.valueMetrics)
         }
         
-        observer.observe(command: .pid(number: 99)) { descriptor in
-            print("Torque: \(descriptor?.valueMetrics)")
-            self.saveToDB(dataType: .torque, value: descriptor?.valueMetrics)
+        observer.observe(command: .pid(number: 35)) { descriptor in
+            print("Fuel Rail Pressure: \(descriptor?.valueMetrics)")
+            self.saveToDB(dataType: .fuelRailPressure, value: descriptor?.valueMetrics)
         }
         
         ObserverQueue.shared.register(observer: observer)
@@ -93,8 +93,8 @@ class OBDIIService: BaseService {
             obd.request(repeat: command)
         }
 
-        /* Torque */
-        command = Command.Mode01.pid(number: 99)
+        /* Fuel Rail Pressure */
+        command = Command.Mode01.pid(number: 35)
         if obd.isRepeating(repeat: command) {
             obd.stop(repeat: command)
         } else {

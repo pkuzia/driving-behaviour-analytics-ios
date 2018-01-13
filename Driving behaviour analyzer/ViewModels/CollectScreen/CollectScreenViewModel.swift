@@ -25,7 +25,7 @@ class CollectScreenViewModel: BaseViewModel {
     let vehicleSpeedLabel = "vehicle_speed_label".localized
     let engineLoadLabel = "engine_load_label".localized
     let engineSpeedLabel = "engine_speed_label".localized
-    let torqueLabel = "torque_label".localized
+    let fuelRailPressureLabel = "fuel_rail_pressure_label".localized
     
     let connectionStateNotConnected = "connection_state_not_connected".localized
     let connectionStateConnected = "connection_state_connected".localized

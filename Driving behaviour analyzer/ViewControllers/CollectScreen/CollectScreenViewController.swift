@@ -61,7 +61,7 @@ class CollectScreenViewController: BaseViewController {
                                                             attribute: .collectParameterLabel)
         engineSpeed.attributedText = StyleKit.attributedText(text: collectScreenViewModel.engineSpeedLabel,
                                                              attribute: .collectParameterLabel)
-        torque.attributedText = StyleKit.attributedText(text: collectScreenViewModel.torqueLabel, attribute: .collectParameterLabel)
+        torque.attributedText = StyleKit.attributedText(text: collectScreenViewModel.fuelRailPressureLabel, attribute: .collectParameterLabel)
         vehicleSpeedLabel.attributedText = StyleKit.attributedText(text: collectScreenViewModel.vehicleSpeedLabel,
                                                                    attribute: .collectParameterLabel)
         
@@ -151,7 +151,7 @@ extension CollectScreenViewController: OBDIIServiceDelegate {
                 self.engineSpeedValue.attributedText = StyleKit.attributedText(text: value, attribute: .collectParameterLabel)
             case .vehicleSpeed:
                 self.vehicleSpeedValue.attributedText = StyleKit.attributedText(text: value, attribute: .collectParameterLabel)
-            case .torque:
+            case .fuelRailPressure:
                 self.torqueValue.attributedText = StyleKit.attributedText(text: value, attribute: .collectParameterLabel)
             default:
                 break

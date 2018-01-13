@@ -18,7 +18,7 @@
 "vehicle_speed_label" = "Vehicle speed";
 "engine_load_label" = "Engine load";
 "engine_speed_label" = "Engine speed";
-"torque_label" = "Torque";
+"fuel_rail_pressure_label" = "Fuel Rail Pressure";
 
 "connection_state_not_connected" = "Not Connected";
 "connection_state_connected" = "Connected";
