@@ -15,6 +15,29 @@ protocol OBDIIServiceDelegate {
     func valueRecieved(type: DataType, value: String)
 }
 
+class OBDIIReaderCounter {
+    var readerStorage: [DataType: Int]
+    let resetValue = 1
+    
+    init() {
+        readerStorage = [DataType: Int]()
+        for dataType in DataType.dataTypes {
+            readerStorage[dataType] = 0
+        }
+    }
+    
+    func incrementValue(dataType: DataType) -> Bool {
+        if readerStorage[dataType] == resetValue {
+            readerStorage[dataType] = 0
+            return true
+        } else if let value = readerStorage[dataType]{
+            readerStorage[dataType] = value + 1
+            return false
+        }
+        return false
+    }
+}
+
 class OBDIIService: BaseService {
     
     // MARK: - Variables
@@ -24,29 +47,27 @@ class OBDIIService: BaseService {
     
     let obd = OBD2()
     var obdIIServiceDelegate: OBDIIServiceDelegate?
+    var obdIIReaderCounter: OBDIIReaderCounter?
     
     // MARK: - Functions
     
     func initOBD() {
         let observer = Observer<Command.Mode01>()
+        obdIIReaderCounter = OBDIIReaderCounter()
         
         /* Observer for params */
         observer.observe(command: .pid(number: 13)) { descriptor in
-            print("Vehicle speed: \(descriptor?.valueMetrics)")
             self.saveToDB(dataType: .vehicleSpeed, value: descriptor?.valueMetrics)
         }
         observer.observe(command: .pid(number: 12)) { descriptor in
-            print("RPM: \(descriptor?.valueMetrics)")
             self.saveToDB(dataType: .engineSpeed, value: descriptor?.valueMetrics)
         }
         
         observer.observe(command: .pid(number: 4)) { descriptor in
-            print("Engine load: \(descriptor?.valueMetrics)")
             self.saveToDB(dataType: .engineLoad, value: descriptor?.valueMetrics)
         }
         
         observer.observe(command: .pid(number: 35)) { descriptor in
-            print("Fuel Rail Pressure: \(descriptor?.valueMetrics)")
             self.saveToDB(dataType: .fuelRailPressure, value: descriptor?.valueMetrics)
         }
         
@@ -76,7 +97,7 @@ class OBDIIService: BaseService {
         } else {
             obd.request(repeat: command)
         }
-        
+
         /* Engine speed */
         command = Command.Mode01.pid(number: 12)
         if obd.isRepeating(repeat: command) {
@@ -94,7 +115,7 @@ class OBDIIService: BaseService {
         }
 
         /* Fuel Rail Pressure */
-        command = Command.Mode01.pid(number: 35)
+         command = Command.Mode01.pid(number: 35)
         if obd.isRepeating(repeat: command) {
             obd.stop(repeat: command)
         } else {
@@ -115,20 +136,22 @@ class OBDIIService: BaseService {
     
     fileprivate func saveToDB(dataType: DataType, value: Float?) {
         if let value = value {
-            
-            let driveItemData = DriveItemData()
-            driveItemData.dataTypeEnum = dataType
-            driveItemData.value = value
-            driveItemData.timestamp = Int(NSDate().timeIntervalSince1970 * 1000.0)
             obdIIServiceDelegate?.valueRecieved(type: dataType, value: String(value))
-//            do {
-//                let realm = try Realm()
-//                try realm.write {
-//                    realm.add(driveItemData)
-//                }
-//            } catch _ {
-//
-//            }
+            if let save = obdIIReaderCounter?.incrementValue(dataType: dataType), save {
+                let driveItemData = DriveItemData()
+                driveItemData.dataTypeEnum = dataType
+                driveItemData.value = value
+                driveItemData.timestamp = Int(NSDate().timeIntervalSince1970 * 1000.0)
+                
+                do {
+                    let realm = try Realm()
+                    try realm.write {
+                        realm.add(driveItemData)
+                    }
+                } catch _ {
+                    
+                }
+            }
         }
     }
     

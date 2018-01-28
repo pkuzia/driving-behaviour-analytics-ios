@@ -16,6 +16,8 @@ enum DataType: String {
     case vehicleSpeed = "VehicleSpeed"
     case fuelRailPressure = "Fuel Rail Pressure"
     case undefined = "Undefined"
+    
+    static let dataTypes = [engineLoad, engineSpeed, vehicleSpeed, fuelRailPressure]
 }
 
 
