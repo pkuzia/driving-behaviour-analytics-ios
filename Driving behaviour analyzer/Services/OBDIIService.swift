@@ -9,10 +9,15 @@
 import Foundation
 import OBD2
 import RealmSwift
+import CoreLocation
 
 protocol OBDIIServiceDelegate {
     func stateChanged(state: ScanState)
     func valueRecieved(type: DataType, value: String)
+}
+
+protocol OBDIILocationProviderDelegate {
+    func currentLocation() -> CLLocationCoordinate2D?
 }
 
 class OBDIIReaderCounter {
@@ -47,6 +52,7 @@ class OBDIIService: BaseService {
     
     let obd = OBD2()
     var obdIIServiceDelegate: OBDIIServiceDelegate?
+    var obdIILocationProviderDelegate: OBDIILocationProviderDelegate?
     var obdIIReaderCounter: OBDIIReaderCounter?
     
     // MARK: - Functions
@@ -138,10 +144,16 @@ class OBDIIService: BaseService {
         if let value = value {
             obdIIServiceDelegate?.valueRecieved(type: dataType, value: String(value))
             if let save = obdIIReaderCounter?.incrementValue(dataType: dataType), save {
+                //TODO: Refactor
                 let driveItemData = DriveItemData()
                 driveItemData.dataTypeEnum = dataType
                 driveItemData.value = value
                 driveItemData.timestamp = Int(NSDate().timeIntervalSince1970 * 1000.0)
+                driveItemData.driveStyleEnum = .optimal
+                if let location = obdIILocationProviderDelegate?.currentLocation() {
+                    driveItemData.lat = Float(location.latitude)
+                    driveItemData.lng = Float(location.longitude)
+                }
                 
                 do {
                     let realm = try Realm()

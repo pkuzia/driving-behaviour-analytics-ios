@@ -11,11 +11,11 @@ import UIKit
 import SwifterSwift
 
 public enum Attribute {
-    case menuButton, collectParameterLabel, collectStateLabel
+    case menuButton, collectParameterLabel, collectStateLabel, collectDriveItemData, collectDriveItemHeader, collectDriveValueLabel
 }
 
 public enum Color {
-    case baseBlueColor, baseGreenColor, baseNavyBlueColor, baseGrayColor
+    case baseBlueColor, baseGreenColor, baseGrayColor, baseBlueDarkColor
 }
 
 
@@ -32,6 +32,12 @@ class StyleKit {
             attributedDictionary = attributedText(color: colorType(color: .baseGrayColor), font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightLight))
         case .collectStateLabel:
             attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 20 , weight: UIFontWeightLight))
+        case .collectDriveItemData:
+            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 15 , weight: UIFontWeightLight))
+        case .collectDriveValueLabel:
+            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 13 , weight: UIFontWeightLight), alignment: .center)
+        case .collectDriveItemHeader:
+            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightRegular))
         }
         return NSAttributedString(string: text, attributes: attributedDictionary)
     }
@@ -44,10 +50,10 @@ class StyleKit {
         switch color {
         case .baseBlueColor:
             return UIColor(hexString: "#2D3D54")!
+        case .baseBlueDarkColor:
+            return UIColor(hexString: "#1C2E49")!
         case .baseGreenColor:
             return UIColor(hexString: "#5EC6B9")!
-        case .baseNavyBlueColor:
-            return UIColor(hexString: "#2F3C51")!
         case .baseGrayColor:
             return UIColor(hexString: "#AFB6C0")!
         }

@@ -6,6 +6,10 @@
 	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+    <key>NSLocationUsageDescription</key>
+    <string></string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string></string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>

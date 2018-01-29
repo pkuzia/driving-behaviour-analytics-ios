@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol CollectScreenViewModelDelegate: class {
     
@@ -40,8 +41,25 @@ class CollectScreenViewModel: BaseViewModel {
     
     weak var delegate: CollectScreenViewModelDelegate?
     var connectionState: ConnectionState = .notConnected
+    var userCurrentCoordinates: CLLocationCoordinate2D?
     
     // MARK: - Functions
+    
+    override init() {
+        super.init()
+        setOBDIIServiceDelegate()
+    }
+    
+    fileprivate func setOBDIIServiceDelegate() {
+        obdIIService.obdIILocationProviderDelegate = self
+    }
 }
 
+// MARK: - OBDIILocationProviderDelegate
+
+extension CollectScreenViewModel: OBDIILocationProviderDelegate {
+    func currentLocation() -> CLLocationCoordinate2D? {
+        return userCurrentCoordinates
+    }
+}
 

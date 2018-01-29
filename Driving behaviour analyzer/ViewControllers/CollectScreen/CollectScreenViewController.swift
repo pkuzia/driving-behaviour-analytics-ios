@@ -8,6 +8,7 @@
 
 import UIKit
 import OBD2
+import CoreLocation
 
 class CollectScreenViewController: BaseViewController {
     
@@ -27,6 +28,7 @@ class CollectScreenViewController: BaseViewController {
     @IBOutlet weak var torqueValue: UILabel!
     
     let collectScreenViewModel = CollectScreenViewModel()
+    let locationManager = CLLocationManager()
     
     // MARK: - View Lifecycle
     
@@ -52,6 +54,7 @@ class CollectScreenViewController: BaseViewController {
     
     func initUI() {
         initNavBar()
+        initLocationManager()
         actionButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, -65, 0)
         
         /* Labels */
@@ -73,6 +76,13 @@ class CollectScreenViewController: BaseViewController {
                                                              attribute: .collectParameterLabel)
         vehicleSpeedValue.attributedText = StyleKit.attributedText(text: collectScreenViewModel.emptyValuePlaceholder,
                                                                    attribute: .collectParameterLabel)
+    }
+    
+    fileprivate func initLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
     }
     
     fileprivate func initNavBar() {
@@ -156,6 +166,16 @@ extension CollectScreenViewController: OBDIIServiceDelegate {
             default:
                 break
             }
+        }
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+
+extension CollectScreenViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let coordinate = locations.item(at: 0)?.coordinate {
+            collectScreenViewModel.userCurrentCoordinates = coordinate
         }
     }
 }

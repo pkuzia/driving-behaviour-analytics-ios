@@ -20,6 +20,10 @@
 		974444C81FF2CF71002CE2BF /* CollectNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974444C71FF2CF71002CE2BF /* CollectNavigationViewController.swift */; };
 		974444CA1FF2CF96002CE2BF /* CollectScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974444C91FF2CF96002CE2BF /* CollectScreenViewController.swift */; };
 		974444CD1FF2CFC3002CE2BF /* CollectScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974444CC1FF2CFC3002CE2BF /* CollectScreenViewModel.swift */; };
+		97490854201E55E700C7D7D1 /* CollectDriveItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97490853201E55E700C7D7D1 /* CollectDriveItemCell.swift */; };
+		97490856201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97490855201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift */; };
+		97490858201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97490857201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift */; };
+		9749085A201F162500C7D7D1 /* CollectDriveItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97490859201F162500C7D7D1 /* CollectDriveItemHeader.swift */; };
 		97E5EFEA1FEC1A6E00358375 /* MenuScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFE91FEC1A6E00358375 /* MenuScreenViewController.swift */; };
 		97E5EFED1FEC1A8E00358375 /* MenuScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFEC1FEC1A8E00358375 /* MenuScreenViewModel.swift */; };
 		97E5EFEF1FEC1CDA00358375 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFEE1FEC1CDA00358375 /* StyleKit.swift */; };
@@ -55,6 +59,10 @@
 		974444C71FF2CF71002CE2BF /* CollectNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectNavigationViewController.swift; sourceTree = "<group>"; };
 		974444C91FF2CF96002CE2BF /* CollectScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectScreenViewController.swift; sourceTree = "<group>"; };
 		974444CC1FF2CFC3002CE2BF /* CollectScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectScreenViewModel.swift; sourceTree = "<group>"; };
+		97490853201E55E700C7D7D1 /* CollectDriveItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDriveItemCell.swift; sourceTree = "<group>"; };
+		97490855201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectTableViewDriveDataViewController.swift; sourceTree = "<group>"; };
+		97490857201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectTableViewDriveDataViewModel.swift; sourceTree = "<group>"; };
+		97490859201F162500C7D7D1 /* CollectDriveItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDriveItemHeader.swift; sourceTree = "<group>"; };
 		97E5EFE91FEC1A6E00358375 /* MenuScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewController.swift; sourceTree = "<group>"; };
 		97E5EFEC1FEC1A8E00358375 /* MenuScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewModel.swift; sourceTree = "<group>"; };
 		97E5EFEE1FEC1CDA00358375 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -205,6 +213,7 @@
 			children = (
 				974444C71FF2CF71002CE2BF /* CollectNavigationViewController.swift */,
 				974444C91FF2CF96002CE2BF /* CollectScreenViewController.swift */,
+				97490855201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift */,
 			);
 			path = CollectScreen;
 			sourceTree = "<group>";
@@ -213,6 +222,16 @@
 			isa = PBXGroup;
 			children = (
 				974444CC1FF2CFC3002CE2BF /* CollectScreenViewModel.swift */,
+				97490857201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift */,
+			);
+			path = CollectScreen;
+			sourceTree = "<group>";
+		};
+		97490852201E55BE00C7D7D1 /* CollectScreen */ = {
+			isa = PBXGroup;
+			children = (
+				97490853201E55E700C7D7D1 /* CollectDriveItemCell.swift */,
+				97490859201F162500C7D7D1 /* CollectDriveItemHeader.swift */,
 			);
 			path = CollectScreen;
 			sourceTree = "<group>";
@@ -236,6 +255,7 @@
 		998CC4C5409976F8AFBDF6E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				97490852201E55BE00C7D7D1 /* CollectScreen */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -445,18 +465,22 @@
 			files = (
 				BB7262A79599BAF5D20AACCA /* Localizable.strings in Sources */,
 				BB6C33D196D5E180AC257D3F /* StoryboardHelper.swift in Sources */,
+				97490856201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift in Sources */,
 				2EE14CDB3CB72317CA8BA3E2 /* String.swift in Sources */,
 				97E5EFEF1FEC1CDA00358375 /* StyleKit.swift in Sources */,
 				4FE156C842AD91C27FFCA323 /* RestClient.swift in Sources */,
 				67DDB6DE58DF0BC2EFE900EC /* BaseService.swift in Sources */,
+				97490854201E55E700C7D7D1 /* CollectDriveItemCell.swift in Sources */,
 				97E5EFED1FEC1A8E00358375 /* MenuScreenViewModel.swift in Sources */,
 				97E5EFEA1FEC1A6E00358375 /* MenuScreenViewController.swift in Sources */,
 				9739934E2001025D00752946 /* DriveItemData.swift in Sources */,
 				971EA0FD1FF1140E000BE731 /* OBDIIService.swift in Sources */,
+				97490858201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift in Sources */,
 				9563E667451E310C751AD8E5 /* BaseViewModel.swift in Sources */,
 				20E817BBC5C110F88916E16F /* BaseViewController.swift in Sources */,
 				974444C81FF2CF71002CE2BF /* CollectNavigationViewController.swift in Sources */,
 				FD558B599A4FD8D951AAEDB7 /* AppDelegate.swift in Sources */,
+				9749085A201F162500C7D7D1 /* CollectDriveItemHeader.swift in Sources */,
 				90345E22BF5954962B025CE6 /* .swiftlint.yml in Sources */,
 				974444CD1FF2CFC3002CE2BF /* CollectScreenViewModel.swift in Sources */,
 				974444CA1FF2CF96002CE2BF /* CollectScreenViewController.swift in Sources */,
@@ -581,6 +605,7 @@
 				PROVISIONING_PROFILE = "4fdf1136-73f3-4260-be2b-0a17b0f9e7f3";
 				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

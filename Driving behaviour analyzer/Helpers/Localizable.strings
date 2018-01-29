@@ -24,3 +24,12 @@
 "connection_state_connected" = "Connected";
 "connection_state_opening_connection" = "Opening connection";
 "connection_state_initializing" = "Initializing";
+
+
+/* Collect screen data table */
+
+"collect_table_view_title" = "Collected Raw Data";
+"collect_screen_table_value_header" = "Value";
+"collect_screen_table_location_header" = "Location";
+"collect_screen_table_time_header" = "Time";
+"collect_screen_table_type_header" = "Type";
