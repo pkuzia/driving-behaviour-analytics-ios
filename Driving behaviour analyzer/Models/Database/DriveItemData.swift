@@ -11,9 +11,9 @@ import UIKit
 import RealmSwift
 
 enum DataType: String {
-    case engineLoad = "Engine Load"
-    case engineSpeed = "Engine Speed"
-    case vehicleSpeed = "Vehicle Speed"
+    case engineLoad = "EngineLoad"
+    case engineSpeed = "EngineSpeed"
+    case vehicleSpeed = "VehicleSpeed"
     case fuelRailPressure = "Fuel Rail Pressure"
     case undefined = "Undefined"
     

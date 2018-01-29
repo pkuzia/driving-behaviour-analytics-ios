@@ -14,6 +14,8 @@
 		67DDB6DE58DF0BC2EFE900EC /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D73C0CA131055616E424D /* BaseService.swift */; };
 		90345E22BF5954962B025CE6 /* .swiftlint.yml in Sources */ = {isa = PBXBuildFile; fileRef = BFCF244F7CB9BE76FAC7E171 /* .swiftlint.yml */; };
 		9563E667451E310C751AD8E5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C585B480675D82004C137668 /* BaseViewModel.swift */; };
+		9716261E201F355600908108 /* CollectTableViewCalculatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716261D201F355600908108 /* CollectTableViewCalculatedViewController.swift */; };
+		97162620201F35BD00908108 /* CollectTableViewCalculatedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9716261F201F35BD00908108 /* CollectTableViewCalculatedViewModel.swift */; };
 		971EA0FD1FF1140E000BE731 /* OBDIIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 971EA0FC1FF1140E000BE731 /* OBDIIService.swift */; };
 		9739934E2001025D00752946 /* DriveItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9739934D2001025D00752946 /* DriveItemData.swift */; };
 		974444C51FF2CEFA002CE2BF /* Collect.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 974444C41FF2CEFA002CE2BF /* Collect.storyboard */; };
@@ -24,6 +26,9 @@
 		97490856201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97490855201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift */; };
 		97490858201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97490857201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift */; };
 		9749085A201F162500C7D7D1 /* CollectDriveItemHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97490859201F162500C7D7D1 /* CollectDriveItemHeader.swift */; };
+		977AA6ED201F3D5000C8051E /* CalculatedDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977AA6EC201F3D5000C8051E /* CalculatedDataCell.swift */; };
+		977AA6EF201F3D8400C8051E /* CalculatedDataHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977AA6EE201F3D8400C8051E /* CalculatedDataHeader.swift */; };
+		977AA6F1201F488F00C8051E /* CalculatedDriveItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977AA6F0201F488F00C8051E /* CalculatedDriveItem.swift */; };
 		97E5EFEA1FEC1A6E00358375 /* MenuScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFE91FEC1A6E00358375 /* MenuScreenViewController.swift */; };
 		97E5EFED1FEC1A8E00358375 /* MenuScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFEC1FEC1A8E00358375 /* MenuScreenViewModel.swift */; };
 		97E5EFEF1FEC1CDA00358375 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFEE1FEC1CDA00358375 /* StyleKit.swift */; };
@@ -53,6 +58,8 @@
 		529B1AC1C2C7876057000073 /* Pods_Driving_behaviour_analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Driving_behaviour_analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B16937B566C67FC7AD5C5E6 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		83B45B164FAAFBB62A801CFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9716261D201F355600908108 /* CollectTableViewCalculatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectTableViewCalculatedViewController.swift; sourceTree = "<group>"; };
+		9716261F201F35BD00908108 /* CollectTableViewCalculatedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectTableViewCalculatedViewModel.swift; sourceTree = "<group>"; };
 		971EA0FC1FF1140E000BE731 /* OBDIIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBDIIService.swift; sourceTree = "<group>"; };
 		9739934D2001025D00752946 /* DriveItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriveItemData.swift; sourceTree = "<group>"; };
 		974444C41FF2CEFA002CE2BF /* Collect.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Collect.storyboard; sourceTree = "<group>"; };
@@ -63,6 +70,9 @@
 		97490855201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectTableViewDriveDataViewController.swift; sourceTree = "<group>"; };
 		97490857201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectTableViewDriveDataViewModel.swift; sourceTree = "<group>"; };
 		97490859201F162500C7D7D1 /* CollectDriveItemHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDriveItemHeader.swift; sourceTree = "<group>"; };
+		977AA6EC201F3D5000C8051E /* CalculatedDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedDataCell.swift; sourceTree = "<group>"; };
+		977AA6EE201F3D8400C8051E /* CalculatedDataHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedDataHeader.swift; sourceTree = "<group>"; };
+		977AA6F0201F488F00C8051E /* CalculatedDriveItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatedDriveItem.swift; sourceTree = "<group>"; };
 		97E5EFE91FEC1A6E00358375 /* MenuScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewController.swift; sourceTree = "<group>"; };
 		97E5EFEC1FEC1A8E00358375 /* MenuScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewModel.swift; sourceTree = "<group>"; };
 		97E5EFEE1FEC1CDA00358375 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -112,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				9739934C2001021900752946 /* Database */,
+				977AA6F0201F488F00C8051E /* CalculatedDriveItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,9 +222,10 @@
 		974444C61FF2CF4A002CE2BF /* CollectScreen */ = {
 			isa = PBXGroup;
 			children = (
+				977AA6E7201F3CB300C8051E /* CalculatedDataTableView */,
+				977AA6E6201F3C9A00C8051E /* RawDataTableView */,
 				974444C71FF2CF71002CE2BF /* CollectNavigationViewController.swift */,
 				974444C91FF2CF96002CE2BF /* CollectScreenViewController.swift */,
-				97490855201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift */,
 			);
 			path = CollectScreen;
 			sourceTree = "<group>";
@@ -221,8 +233,9 @@
 		974444CB1FF2CFB4002CE2BF /* CollectScreen */ = {
 			isa = PBXGroup;
 			children = (
+				977AA6E9201F3CE300C8051E /* CalculatedDataTable */,
+				977AA6E8201F3CD100C8051E /* RawDataTable */,
 				974444CC1FF2CFC3002CE2BF /* CollectScreenViewModel.swift */,
-				97490857201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift */,
 			);
 			path = CollectScreen;
 			sourceTree = "<group>";
@@ -230,10 +243,60 @@
 		97490852201E55BE00C7D7D1 /* CollectScreen */ = {
 			isa = PBXGroup;
 			children = (
+				977AA6EB201F3D1E00C8051E /* RawDataTable */,
+				977AA6EA201F3D1400C8051E /* CalculatedDataTable */,
+			);
+			path = CollectScreen;
+			sourceTree = "<group>";
+		};
+		977AA6E6201F3C9A00C8051E /* RawDataTableView */ = {
+			isa = PBXGroup;
+			children = (
+				97490855201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift */,
+			);
+			path = RawDataTableView;
+			sourceTree = "<group>";
+		};
+		977AA6E7201F3CB300C8051E /* CalculatedDataTableView */ = {
+			isa = PBXGroup;
+			children = (
+				9716261D201F355600908108 /* CollectTableViewCalculatedViewController.swift */,
+			);
+			path = CalculatedDataTableView;
+			sourceTree = "<group>";
+		};
+		977AA6E8201F3CD100C8051E /* RawDataTable */ = {
+			isa = PBXGroup;
+			children = (
+				97490857201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift */,
+			);
+			path = RawDataTable;
+			sourceTree = "<group>";
+		};
+		977AA6E9201F3CE300C8051E /* CalculatedDataTable */ = {
+			isa = PBXGroup;
+			children = (
+				9716261F201F35BD00908108 /* CollectTableViewCalculatedViewModel.swift */,
+			);
+			path = CalculatedDataTable;
+			sourceTree = "<group>";
+		};
+		977AA6EA201F3D1400C8051E /* CalculatedDataTable */ = {
+			isa = PBXGroup;
+			children = (
+				977AA6EC201F3D5000C8051E /* CalculatedDataCell.swift */,
+				977AA6EE201F3D8400C8051E /* CalculatedDataHeader.swift */,
+			);
+			path = CalculatedDataTable;
+			sourceTree = "<group>";
+		};
+		977AA6EB201F3D1E00C8051E /* RawDataTable */ = {
+			isa = PBXGroup;
+			children = (
 				97490853201E55E700C7D7D1 /* CollectDriveItemCell.swift */,
 				97490859201F162500C7D7D1 /* CollectDriveItemHeader.swift */,
 			);
-			path = CollectScreen;
+			path = RawDataTable;
 			sourceTree = "<group>";
 		};
 		97E5EFE81FEC1A1D00358375 /* MenuScreen */ = {
@@ -463,6 +526,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97162620201F35BD00908108 /* CollectTableViewCalculatedViewModel.swift in Sources */,
+				977AA6EF201F3D8400C8051E /* CalculatedDataHeader.swift in Sources */,
 				BB7262A79599BAF5D20AACCA /* Localizable.strings in Sources */,
 				BB6C33D196D5E180AC257D3F /* StoryboardHelper.swift in Sources */,
 				97490856201E56F300C7D7D1 /* CollectTableViewDriveDataViewController.swift in Sources */,
@@ -471,11 +536,14 @@
 				4FE156C842AD91C27FFCA323 /* RestClient.swift in Sources */,
 				67DDB6DE58DF0BC2EFE900EC /* BaseService.swift in Sources */,
 				97490854201E55E700C7D7D1 /* CollectDriveItemCell.swift in Sources */,
+				977AA6ED201F3D5000C8051E /* CalculatedDataCell.swift in Sources */,
 				97E5EFED1FEC1A8E00358375 /* MenuScreenViewModel.swift in Sources */,
 				97E5EFEA1FEC1A6E00358375 /* MenuScreenViewController.swift in Sources */,
 				9739934E2001025D00752946 /* DriveItemData.swift in Sources */,
+				9716261E201F355600908108 /* CollectTableViewCalculatedViewController.swift in Sources */,
 				971EA0FD1FF1140E000BE731 /* OBDIIService.swift in Sources */,
 				97490858201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift in Sources */,
+				977AA6F1201F488F00C8051E /* CalculatedDriveItem.swift in Sources */,
 				9563E667451E310C751AD8E5 /* BaseViewModel.swift in Sources */,
 				20E817BBC5C110F88916E16F /* BaseViewController.swift in Sources */,
 				974444C81FF2CF71002CE2BF /* CollectNavigationViewController.swift in Sources */,

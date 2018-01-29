@@ -84,16 +84,13 @@ extension CollectTableViewDriveDataViewController: CollectTableViewDriveDataView
 extension CollectTableViewDriveDataViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let driveItemData = collectTableViewDriveDataViewModel.driveItemData {
-            return driveItemData.count
-        }
-        return 0
+        return collectTableViewDriveDataViewModel.driveItemData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: collectTableViewDriveDataViewModel.driveItemCellID,
-                                                    for: indexPath) as? CollectDriveItemCell, let driveItemData = collectTableViewDriveDataViewModel.driveItemData {
-            if let driveItemDataItem = driveItemData.item(at: indexPath.row) {
+                                                    for: indexPath) as? CollectDriveItemCell {
+            if let driveItemDataItem = collectTableViewDriveDataViewModel.driveItemData.item(at: indexPath.row) {
                 cell.initCellWithData(driveItemDataItem)
             }
         }

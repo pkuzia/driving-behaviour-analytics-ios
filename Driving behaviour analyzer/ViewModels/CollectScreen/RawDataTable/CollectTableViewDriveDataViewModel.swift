@@ -23,7 +23,7 @@ class CollectTableViewDriveDataViewModel: BaseViewModel {
     let driveItemHeaderCellID = "driveItemHeaderCell"
     let screenTitle = "collect_table_view_title".localized
     
-    var driveItemData: [DriveItemData]?
+    var driveItemData: [DriveItemData] = []
     
     let driveItemCellSize: CGFloat = 65
     let driveItemCellHeaderSize: CGFloat = 55
