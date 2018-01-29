@@ -33,11 +33,11 @@ class StyleKit {
         case .collectStateLabel:
             attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 20 , weight: UIFontWeightLight))
         case .collectDriveItemData:
-            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 15 , weight: UIFontWeightLight))
+            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 15 , weight: UIFontWeightLight), alignment: .center)
         case .collectDriveValueLabel:
             attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 13 , weight: UIFontWeightLight), alignment: .center)
         case .collectDriveItemHeader:
-            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightRegular))
+            attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightRegular), alignment: .center)
         }
         return NSAttributedString(string: text, attributes: attributedDictionary)
     }
