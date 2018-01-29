@@ -762,11 +762,11 @@
                                         <connections>
                                             <outlet property="engineLoadValue" destination="uck-9a-nAl" id="m0F-D3-rSN"/>
                                             <outlet property="engineSpeedValue" destination="gXc-uN-mbV" id="AHR-U6-wsM"/>
-                                            <outlet property="position" destination="MBf-Ir-Me5" id="I2k-sK-uP1"/>
+                                            <outlet property="position" destination="csl-tc-KZt" id="I9G-HB-Qxr"/>
                                             <outlet property="pressureValue" destination="Kuh-Ai-GIL" id="7xp-cL-0Gq"/>
-                                            <outlet property="time" destination="MBf-Ir-Me5" id="JoW-9q-pHZ"/>
-                                            <outlet property="vehicleEngineSpeedChangeRatio" destination="MBf-Ir-Me5" id="UbS-BW-6YP"/>
-                                            <outlet property="vehicleEngineSpeedRatio" destination="Kuh-Ai-GIL" id="PkO-Tb-hL8"/>
+                                            <outlet property="time" destination="qZa-4K-NHr" id="WuL-sz-Y4A"/>
+                                            <outlet property="vehicleEngineSpeedDeltaRatio" destination="MBf-Ir-Me5" id="4e1-ar-F37"/>
+                                            <outlet property="vehicleEngineSpeedRatio" destination="6Yk-GE-tjz" id="tU5-9X-qiN"/>
                                             <outlet property="vehicleSpeedValue" destination="5UU-9R-SOy" id="Hf5-ec-Noc"/>
                                         </connections>
                                     </tableViewCell>

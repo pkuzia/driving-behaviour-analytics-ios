@@ -18,7 +18,7 @@ class CalculatedDataCell: UITableViewCell {
     @IBOutlet weak var pressureValue: UILabel!
     
     @IBOutlet weak var vehicleEngineSpeedRatio: UILabel!
-    @IBOutlet weak var vehicleEngineSpeedChangeRatio: UILabel!
+    @IBOutlet weak var vehicleEngineSpeedDeltaRatio: UILabel!
     
     @IBOutlet weak var position: UILabel!
     @IBOutlet weak var time: UILabel!
@@ -36,13 +36,22 @@ class CalculatedDataCell: UITableViewCell {
     // MARK: - Functions
     
     func initCellWithData(_ calculatedDriveItem: CalculatedDriveItem) {
-        engineSpeedValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.engineSpeed.string, attribute: .calculatedDriveValueLabel)
+        engineSpeedValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.engineSpeed.string,
+                                                                  attribute: .calculatedDriveValueLabel)
+        vehicleSpeedValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.vehicleSpeed.string,
+                                                                   attribute: .calculatedDriveValueLabel)
+        engineLoadValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.engineLoad.string,
+                                                                 attribute: .calculatedDriveValueLabel)
+        pressureValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.fuelRailPressure.string,
+                                                               attribute: .calculatedDriveValueLabel)
+        if let vehicleEngineSpeedRatioValue = calculatedDriveItem.vehicleEngineSpeedRatio {
+            vehicleEngineSpeedRatio.attributedText = StyleKit.attributedText(text: vehicleEngineSpeedRatioValue.string,
+                                                                             attribute: .calculatedDriveValueLabel)
+        }
         
-        vehicleSpeedValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.vehicleSpeed.string, attribute: .calculatedDriveValueLabel)
-        
-        engineLoadValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.engineLoad.string, attribute: .calculatedDriveValueLabel)
-        
-        pressureValue.attributedText = StyleKit.attributedText(text: calculatedDriveItem.fuelRailPressure.string, attribute: .calculatedDriveValueLabel)
+        if let vehicleEngineSpeedDeltaRatioValue = calculatedDriveItem.vehicleEngineSpeedDeltaRatio {
+            vehicleEngineSpeedDeltaRatio.attributedText = StyleKit.attributedText(text: vehicleEngineSpeedDeltaRatioValue.string,
+                                                                             attribute: .calculatedDriveValueLabel)
+        }
     }
-    
 }

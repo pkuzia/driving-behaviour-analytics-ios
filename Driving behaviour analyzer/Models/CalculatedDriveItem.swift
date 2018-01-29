@@ -10,6 +10,8 @@ import UIKit
 
 class CalculatedDriveItem: NSObject {
 
+     // MARK: - Variables
+    
     let engineSpeed: Int
     let vehicleSpeed: Int
     let engineLoad: Float
@@ -17,6 +19,14 @@ class CalculatedDriveItem: NSObject {
     
     let timestamp: Int
     let position: (lat: Float, lng: Float)
+    
+    var engineSpeedDelta: Int?
+    var vehicleSpeedDelta: Int?
+    
+    var vehicleEngineSpeedRatio: Float?
+    var vehicleEngineSpeedDeltaRatio: Float?
+    
+     // MARK: - Initialization
     
     init(engineSpeed: Int, vehicleSpeed: Int, engineLoad: Float, fuelRailPressure: Int, timestamp: Int,
          position: (lat: Float, lng: Float)) {
@@ -26,5 +36,17 @@ class CalculatedDriveItem: NSObject {
         self.fuelRailPressure = fuelRailPressure
         self.timestamp = timestamp
         self.position = position
+    }
+    
+     // MARK: - Functions
+    
+    func calculateVehicleEngineSpeedRatio(maxVehicleSpeed: Float, maxRPM: Float) {
+        vehicleEngineSpeedRatio = (vehicleSpeed.float / maxVehicleSpeed) / (engineSpeed.float / maxRPM)
+    }
+    
+    func calculateEngineVehicleSpeedRatio(maxDeltaRPM: Float, maxDeltaVehicleSpeed: Float) {
+        if let engineSpeedDelta = engineSpeedDelta, let vehicleSpeedDelta = vehicleSpeedDelta {
+            vehicleEngineSpeedDeltaRatio = (engineSpeedDelta.float / maxDeltaRPM) / (vehicleSpeedDelta.float / maxDeltaVehicleSpeed)
+        }
     }
 }

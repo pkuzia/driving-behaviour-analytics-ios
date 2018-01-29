@@ -41,6 +41,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
                     appendDriveItemData(item: item, index: index)
                     index += 4
                 }
+                calculateEngineVehicleSpeedDeltaRatio()
             }
         }
     }
@@ -78,8 +79,41 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
             fuelRailPressure = nextItem.value
         }
         if let vehicleSpeed = vehicleSpeed, let engineSpeed = engineSpeed, let engineLoad = engineLoad, let fuelRailPressure = fuelRailPressure {
-            calculatedData.append(CalculatedDriveItem(engineSpeed: engineSpeed.int, vehicleSpeed: vehicleSpeed.int, engineLoad: engineLoad,
-                                                      fuelRailPressure: fuelRailPressure.int, timestamp: item.timestamp, position: (lat: item.lat, lng: item.lng)))
+            let calculatedDriveItem = CalculatedDriveItem(engineSpeed: engineSpeed.int, vehicleSpeed: vehicleSpeed.int, engineLoad: engineLoad,
+                                                           fuelRailPressure: fuelRailPressure.int, timestamp: item.timestamp, position: (lat: item.lat, lng: item.lng))
+            //TODO: Mock
+            calculatedDriveItem.calculateVehicleEngineSpeedRatio(maxVehicleSpeed: 180, maxRPM: 4500)
+            calculatedData.append(calculatedDriveItem)
+        }
+    }
+    
+    fileprivate func calculateMaxDeltaValues() -> (maxDeltaRPM: Float, maxDeltaVehicleSpeed: Float) {
+        var maxDeltaRPM = 0
+        var maxDeltaVehicleSpeed = 0
+        
+        var index = 1
+        while let currentItem = calculatedData.item(at: index), let previousItem = calculatedData.item(at: index - 1) {
+            let currentDeltaRPM = currentItem.engineSpeed - previousItem.engineSpeed
+            currentItem.engineSpeedDelta = currentDeltaRPM
+            if currentDeltaRPM > maxDeltaRPM {
+                maxDeltaRPM = currentDeltaRPM
+            }
+            
+            let currentVehicleSpeed = currentItem.vehicleSpeed - previousItem.vehicleSpeed
+            currentItem.vehicleSpeedDelta = currentVehicleSpeed
+            if currentVehicleSpeed > maxDeltaVehicleSpeed {
+                maxDeltaVehicleSpeed = currentVehicleSpeed
+            }
+            
+            index += 1
+        }
+        return (maxDeltaRPM: maxDeltaRPM.float, maxDeltaVehicleSpeed: maxDeltaVehicleSpeed.float)
+    }
+    
+    fileprivate func calculateEngineVehicleSpeedDeltaRatio() {
+        let (maxDeltaRPM, maxDeltaVehicleSpeed) = calculateMaxDeltaValues()
+        calculatedData.forEach { item in
+            item.calculateEngineVehicleSpeedRatio(maxDeltaRPM: maxDeltaRPM, maxDeltaVehicleSpeed: maxDeltaVehicleSpeed)
         }
     }
 }
