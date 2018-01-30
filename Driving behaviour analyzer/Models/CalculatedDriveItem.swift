@@ -24,7 +24,6 @@ class CalculatedDriveItem: NSObject {
     var vehicleSpeedDelta: Int?
     
     var vehicleEngineSpeedRatio: Float?
-    var vehicleEngineSpeedDeltaRatio: Float?
     
      // MARK: - Initialization
     
@@ -42,11 +41,5 @@ class CalculatedDriveItem: NSObject {
     
     func calculateVehicleEngineSpeedRatio(maxVehicleSpeed: Float, maxRPM: Float) {
         vehicleEngineSpeedRatio = (vehicleSpeed.float / maxVehicleSpeed) / (engineSpeed.float / maxRPM)
-    }
-    
-    func calculateEngineVehicleSpeedRatio(maxDeltaRPM: Float, maxDeltaVehicleSpeed: Float) {
-        if let engineSpeedDelta = engineSpeedDelta, let vehicleSpeedDelta = vehicleSpeedDelta {
-            vehicleEngineSpeedDeltaRatio = (engineSpeedDelta.float / maxDeltaRPM) / (vehicleSpeedDelta.float / maxDeltaVehicleSpeed)
-        }
     }
 }

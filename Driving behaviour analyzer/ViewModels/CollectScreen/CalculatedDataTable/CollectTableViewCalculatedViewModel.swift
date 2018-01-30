@@ -41,7 +41,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
                     appendDriveItemData(item: item, index: index)
                     index += 4
                 }
-                calculateEngineVehicleSpeedDeltaRatio()
+                calculateDeltaValues()
             }
         }
     }
@@ -87,7 +87,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         }
     }
     
-    fileprivate func calculateMaxDeltaValues() -> (maxDeltaRPM: Float, maxDeltaVehicleSpeed: Float) {
+    fileprivate func calculateDeltaValues() -> (maxDeltaRPM: Float, maxDeltaVehicleSpeed: Float) {
         var maxDeltaRPM = 0
         var maxDeltaVehicleSpeed = 0
         
@@ -108,13 +108,6 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
             index += 1
         }
         return (maxDeltaRPM: maxDeltaRPM.float, maxDeltaVehicleSpeed: maxDeltaVehicleSpeed.float)
-    }
-    
-    fileprivate func calculateEngineVehicleSpeedDeltaRatio() {
-        let (maxDeltaRPM, maxDeltaVehicleSpeed) = calculateMaxDeltaValues()
-        calculatedData.forEach { item in
-            item.calculateEngineVehicleSpeedRatio(maxDeltaRPM: maxDeltaRPM, maxDeltaVehicleSpeed: maxDeltaVehicleSpeed)
-        }
     }
 }
 

@@ -39,7 +39,7 @@ class StyleKit {
         case .collectDriveItemHeader:
             attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightRegular), alignment: .center)
         case .calculatedDriveValueLabel:
-                attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightRegular), alignment: .center)
+                attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 15 , weight: UIFontWeightRegular))
         }
         return NSAttributedString(string: text, attributes: attributedDictionary)
     }
