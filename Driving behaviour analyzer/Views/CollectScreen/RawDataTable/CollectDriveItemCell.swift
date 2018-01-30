@@ -37,7 +37,7 @@ class CollectDriveItemCell: UITableViewCell {
         selectionStyle = .none
         dayTimePeriodFormatter = DateFormatter()
         if let dayTimePeriodFormatter = dayTimePeriodFormatter {
-            dayTimePeriodFormatter.dateFormat = "dd-MM-yyyy \n HH:mm.SSS"
+            dayTimePeriodFormatter.dateFormat = "dd-MM-yyyy \n H:m:ss.SSS"
         }
     }
     

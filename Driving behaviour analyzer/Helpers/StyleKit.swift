@@ -11,7 +11,8 @@ import UIKit
 import SwifterSwift
 
 public enum Attribute {
-    case menuButton, collectParameterLabel, collectStateLabel, collectDriveItemData, collectDriveItemHeader, collectDriveValueLabel, calculatedDriveValueLabel
+    case menuButton, collectParameterLabel, collectStateLabel, collectDriveItemData, collectDriveItemHeader, collectDriveValueLabel,
+    calculatedDriveValueLabel, calculatedDriveValueLabelRed
 }
 
 public enum Color {
@@ -40,6 +41,8 @@ class StyleKit {
             attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 17 , weight: UIFontWeightRegular), alignment: .center)
         case .calculatedDriveValueLabel:
                 attributedDictionary = attributedText(color: UIColor.white, font: UIFont.systemFont(ofSize: 15 , weight: UIFontWeightRegular))
+        case .calculatedDriveValueLabelRed:
+            attributedDictionary = attributedText(color: UIColor.red, font: UIFont.systemFont(ofSize: 15 , weight: UIFontWeightRegular))
         }
         return NSAttributedString(string: text, attributes: attributedDictionary)
     }

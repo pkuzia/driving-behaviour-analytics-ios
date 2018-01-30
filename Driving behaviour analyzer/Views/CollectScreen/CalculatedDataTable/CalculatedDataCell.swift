@@ -41,7 +41,7 @@ class CalculatedDataCell: UITableViewCell {
         selectionStyle = .none
         dayTimePeriodFormatter = DateFormatter()
         if let dayTimePeriodFormatter = dayTimePeriodFormatter {
-            dayTimePeriodFormatter.dateFormat = "dd-MM\nHH:mm.SSS"
+            dayTimePeriodFormatter.dateFormat = "dd-MM\nH:m:ss.SSS"
         }
     }
     
@@ -54,8 +54,6 @@ class CalculatedDataCell: UITableViewCell {
                                                                    attribute: .calculatedDriveValueLabel)
         engineLoadValue.attributedText = StyleKit.attributedText(text: String(format: "%.02f", calculatedDriveItem.engineLoad),
                                                                  attribute: .calculatedDriveValueLabel)
-        pressureValue.attributedText = StyleKit.attributedText(text: "\(calculatedDriveItem.fuelRailPressure) kPa",
-                                                               attribute: .calculatedDriveValueLabel)
         position.attributedText = StyleKit.attributedText(text: String(format: "%.04f", calculatedDriveItem.position.lat) + ",\n" +
             String(format: "%.04f", calculatedDriveItem.position.lng), attribute: .calculatedDriveValueLabel)
         
@@ -64,23 +62,47 @@ class CalculatedDataCell: UITableViewCell {
             time.attributedText = StyleKit.attributedText(text: dateString, attribute: .calculatedDriveValueLabel)
         }
         
+        if calculatedDriveItem.fuelRailPressure > ReferenceValues.maxFuelRailPressure(baseFuelRailPressure: 26000) {
+            pressureValue.attributedText = StyleKit.attributedText(text: "\(calculatedDriveItem.fuelRailPressure) kPa",
+                attribute: .calculatedDriveValueLabelRed)
+        } else {
+            pressureValue.attributedText = StyleKit.attributedText(text: "\(calculatedDriveItem.fuelRailPressure) kPa",
+                attribute: .calculatedDriveValueLabel)
+        }
+        
+        
         if let vehicleEngineSpeedRatioValue = calculatedDriveItem.vehicleEngineSpeedRatio {
-            vehicleEngineSpeedRatio.attributedText = StyleKit.attributedText(text: String(format: "%.02f", vehicleEngineSpeedRatioValue),
-                                                                             attribute: .calculatedDriveValueLabel)
+            if vehicleEngineSpeedRatioValue > ReferenceValues.maxVehicleEngineSpeedRatio || vehicleEngineSpeedRatioValue < ReferenceValues.minVehicleEngineSpeedRatio {
+                vehicleEngineSpeedRatio.attributedText = StyleKit.attributedText(text: String(format: "%.02f", vehicleEngineSpeedRatioValue),
+                                                                                 attribute: .calculatedDriveValueLabelRed)
+            } else {
+                vehicleEngineSpeedRatio.attributedText = StyleKit.attributedText(text: String(format: "%.02f", vehicleEngineSpeedRatioValue),
+                                                                                 attribute: .calculatedDriveValueLabel)
+            }
         } else {
             vehicleEngineSpeedRatio.attributedText = StyleKit.attributedText(text: "-", attribute: .calculatedDriveValueLabel)
         }
         
         if let vehicleSpeedDeltaValue = calculatedDriveItem.vehicleSpeedDelta {
-            vehicleSpeedDelta.attributedText = StyleKit.attributedText(text:  "\(vehicleSpeedDeltaValue) km/h",
-                                                                             attribute: .calculatedDriveValueLabel)
+            if vehicleSpeedDeltaValue > ReferenceValues.maxVehicleSpeedRatio || vehicleSpeedDeltaValue < ReferenceValues.minVehicleSpeedRatio {
+                vehicleSpeedDelta.attributedText = StyleKit.attributedText(text:  "\(vehicleSpeedDeltaValue) km/h",
+                    attribute: .calculatedDriveValueLabelRed)
+            } else {
+                vehicleSpeedDelta.attributedText = StyleKit.attributedText(text:  "\(vehicleSpeedDeltaValue) km/h",
+                    attribute: .calculatedDriveValueLabel)
+            }
         } else {
             vehicleSpeedDelta.attributedText = StyleKit.attributedText(text: "-", attribute: .calculatedDriveValueLabel)
         }
         
         if let engineSpeedDeltaValue = calculatedDriveItem.engineSpeedDelta {
-            engineSpeedDelta.attributedText = StyleKit.attributedText(text: "\(engineSpeedDeltaValue) RPM",
-                                                                       attribute: .calculatedDriveValueLabel)
+            if engineSpeedDeltaValue > ReferenceValues.maxEngineSpeedRatio {
+                engineSpeedDelta.attributedText = StyleKit.attributedText(text: "\(engineSpeedDeltaValue) RPM",
+                    attribute: .calculatedDriveValueLabelRed)
+            } else {
+                engineSpeedDelta.attributedText = StyleKit.attributedText(text: "\(engineSpeedDeltaValue) RPM",
+                    attribute: .calculatedDriveValueLabel)
+            }
         } else {
             engineSpeedDelta.attributedText = StyleKit.attributedText(text: "-", attribute: .calculatedDriveValueLabel)
         }
