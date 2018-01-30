@@ -28,4 +28,12 @@ class CalculatedDataHeader: UITableViewCell {
 
     // MARK: - Functions
     
+    func initCell() {
+        vehicleDataColumn.attributedText = StyleKit.attributedText(text: "collect_calculated_table_view_data_header".localized,
+                                                             attribute: .collectDriveItemHeader)
+        vehicleDataCalculatedColumn.attributedText = StyleKit.attributedText(text: "collect_calculated_table_view_ratio_header".localized,
+                                                                attribute: .collectDriveItemHeader)
+        envColumn.attributedText = StyleKit.attributedText(text: "collect_calculated_table_view_env_header".localized,
+                                                            attribute: .collectDriveItemHeader)
+    }
 }

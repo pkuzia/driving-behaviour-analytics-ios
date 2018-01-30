@@ -37,3 +37,6 @@
 /* Collected calculated data table */
 
 "collect_calculated_table_view_title" = "Calculated Data";
+"collect_calculated_table_view_data_header" = "Parameters";
+"collect_calculated_table_view_ratio_header" = "Ratio";
+"collect_calculated_table_view_env_header" = "Environment";

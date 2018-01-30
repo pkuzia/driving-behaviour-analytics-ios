@@ -98,10 +98,10 @@ extension CollectTableViewCalculatedViewController: UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        if let cell = tableView.dequeueReusableCell(withIdentifier: collectTableViewCalculatedViewModel.calculatedDataHeaderID) as? CollectDriveItemHeader {
-//            cell.initCell()
-//            return cell
-//        }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: collectTableViewCalculatedViewModel.calculatedDataHeaderID) as? CalculatedDataHeader {
+            cell.initCell()
+            return cell
+        }
         return UIView()
     }
     
