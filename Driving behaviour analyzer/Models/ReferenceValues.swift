@@ -22,4 +22,9 @@ class ReferenceValues {
     static let maxVehicleEngineSpeedRatio: Float = 1.5
     
     static let maxFuelRailPressure: Float = 4.0
+    
+    static let firstScoreCeil: Double = 5.0
+    static let secondScoreCeil: Double = 10.0
+    static let thirdScoreCeil: Double = 15.0
+    
 }

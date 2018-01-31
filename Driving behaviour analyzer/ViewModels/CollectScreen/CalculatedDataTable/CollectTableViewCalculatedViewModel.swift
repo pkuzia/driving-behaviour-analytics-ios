@@ -47,6 +47,30 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         }
     }
     
+    func scoreCalculatedData() -> Int {
+        var dangerItems = 0
+        for item in calculatedData {
+            item.scoreDriveDangerItem()
+            if item.markDangerItem {
+                dangerItems += 1
+            }
+        }
+        let percent: Double = dangerItems.double * 100 / calculatedData.count.double
+        
+        if percent < ReferenceValues.firstScoreCeil {
+            return 1
+        }
+        
+        if percent < ReferenceValues.secondScoreCeil {
+            return 2
+        }
+        
+        if percent < ReferenceValues.thirdScoreCeil {
+            return 3
+        }
+        return 4
+    }
+    
     fileprivate func fetchData(completionHandler: (_ complete: Bool) -> ()) {
         do {
             let realm = try Realm()
@@ -60,11 +84,13 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
     
     func convertDataToCSV() -> String {
         var CSV = ""
-//        for item in calculatedData {
-//
-//        }
+        let score = scoreCalculatedData()
+        for item in calculatedData {
+            if let itemCSV = item.convertItemToCSVItem(score.string) {
+                CSV += itemCSV
+            }
+        }
         return CSV
-        
     }
     
     fileprivate func appendDriveItemData(item: DriveItemData, index: Int) {

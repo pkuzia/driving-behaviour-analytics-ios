@@ -8,6 +8,7 @@
 
 import UIKit
 import SwifterSwift
+import MessageUI
 
 class CollectTableViewCalculatedViewController: BaseViewController {
     
@@ -70,13 +71,14 @@ class CollectTableViewCalculatedViewController: BaseViewController {
     // MARK: - User Interaction
     
     func clickCSVButtonHandler() {
-//        let mailVC = MFMailComposeViewController()
-//        mailVC.mailComposeDelegate = self
-//        mailVC.setToRecipients([])
-//        mailVC.setSubject("Driving Behavior analyzer CSV")
-//        mailVC.setMessageBody("", isHTML: false)
-//
-//        presentViewController(mailVC, animated: true, completion: nil)
+        let CSV = collectTableViewCalculatedViewModel.convertDataToCSV()
+        let mailVC = MFMailComposeViewController()
+        mailVC.mailComposeDelegate = self
+        mailVC.setToRecipients([])
+        mailVC.setSubject("Driving Behavior analyzer CSV")
+        mailVC.setMessageBody(CSV, isHTML: false)
+
+        present(mailVC, animated: true, completion: nil)
     }
     
     // MARK: - Additional Helpers
@@ -122,4 +124,10 @@ extension CollectTableViewCalculatedViewController: UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return collectTableViewCalculatedViewModel.calculatedDataHeaderSize
     }
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+
+extension CollectTableViewCalculatedViewController: MFMailComposeViewControllerDelegate {
+    
 }

@@ -32,6 +32,8 @@ class CalculatedDriveItem: NSObject {
     var fuelRailPressureRatioCorrect = true
     var engineLoadCorrect = true
     
+    var markDangerItem = false
+    
      // MARK: - Initialization
     
     init(engineSpeed: Int, vehicleSpeed: Int, engineLoad: Float, fuelRailPressure: Int, timestamp: Int,
@@ -46,10 +48,22 @@ class CalculatedDriveItem: NSObject {
     
      // MARK: - Functions
     
-    func convertItemToCSVItem() -> String? {
+    func scoreDriveDangerItem() {
+        var score = 0
+        for item in [engineSpeedCorrect, vehicleSpeedCorrect, vehicleEngineSpeedRatioCorrect, fuelRailPressureRatioCorrect, engineLoadCorrect] {
+            if !item {
+                score += 1
+            }
+        }
+        if score > 1  {
+            markDangerItem = true
+        }
+    }
+    
+    func convertItemToCSVItem(_ score: String) -> String? {
         if let engineSpeedDelta = engineSpeedDelta, let vehicleSpeedDelta = vehicleSpeedDelta, let vehicleEngineSpeedRatio = vehicleEngineSpeedRatio,
             let fuelRailPressureRatio = fuelRailPressureRatio {
-            return "\(engineSpeedDelta), \(vehicleSpeedDelta), \(vehicleEngineSpeedRatio), \(fuelRailPressureRatio), \(engineLoad)"
+            return "\(engineSpeedDelta), \(vehicleSpeedDelta), \(vehicleEngineSpeedRatio), \(fuelRailPressureRatio), \(engineLoad), \(score)\n"
         }
         return nil
     }
