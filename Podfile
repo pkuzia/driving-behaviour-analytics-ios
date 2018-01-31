@@ -9,6 +9,7 @@ pod 'SwiftLint'
 
 # # UI Staff
 pod 'Kingfisher', '~> 3.0'
+pod 'SwiftSpinner'
 
 # # DB & Networking
 pod 'Realm', '~> 2.1'

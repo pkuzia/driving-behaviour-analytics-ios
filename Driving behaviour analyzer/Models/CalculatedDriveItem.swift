@@ -24,6 +24,13 @@ class CalculatedDriveItem: NSObject {
     var vehicleSpeedDelta: Int?
     
     var vehicleEngineSpeedRatio: Float?
+    var fuelRailPressureRatio: Float?
+    
+    var engineSpeedCorrect = true
+    var vehicleSpeedCorrect = true
+    var vehicleEngineSpeedRatioCorrect = true
+    var fuelRailPressureRatioCorrect = true
+    var engineLoadCorrect = true
     
      // MARK: - Initialization
     
@@ -39,7 +46,44 @@ class CalculatedDriveItem: NSObject {
     
      // MARK: - Functions
     
+    func convertItemToCSVItem() -> String? {
+        if let engineSpeedDelta = engineSpeedDelta, let vehicleSpeedDelta = vehicleSpeedDelta, let vehicleEngineSpeedRatio = vehicleEngineSpeedRatio,
+            let fuelRailPressureRatio = fuelRailPressureRatio {
+            return "\(engineSpeedDelta), \(vehicleSpeedDelta), \(vehicleEngineSpeedRatio), \(fuelRailPressureRatio), \(engineLoad)"
+        }
+        return nil
+    }
+    
     func calculateVehicleEngineSpeedRatio(maxVehicleSpeed: Float, maxRPM: Float) {
         vehicleEngineSpeedRatio = (vehicleSpeed.float / maxVehicleSpeed) / (engineSpeed.float / maxRPM)
+    }
+    
+    func calculateFuelRailPressureRatio(baseFuelRailPressure: Int) {
+        fuelRailPressureRatio = fuelRailPressure.float / baseFuelRailPressure.float
+    }
+    
+    func calculateRangeOfValues() {
+        if let engineSpeedDelta = engineSpeedDelta, engineSpeedDelta > ReferenceValues.maxEngineSpeedRatio {
+            engineSpeedCorrect = false
+        }
+        
+        if let vehicleSpeedDelta = vehicleSpeedDelta, vehicleSpeedDelta > ReferenceValues.maxVehicleSpeedRatio ||
+            vehicleSpeedDelta < ReferenceValues.minVehicleSpeedRatio {
+            vehicleSpeedCorrect = false
+        }
+        
+        if let vehicleEngineSpeedRatio = vehicleEngineSpeedRatio, vehicleEngineSpeedRatio > ReferenceValues.maxVehicleEngineSpeedRatio ||
+            vehicleEngineSpeedRatio < ReferenceValues.minVehicleEngineSpeedRatio {
+                vehicleEngineSpeedRatioCorrect = false
+        }
+        
+        if let fuelRailPressureRatio = fuelRailPressureRatio, fuelRailPressureRatio > ReferenceValues.maxFuelRailPressure {
+            fuelRailPressureRatioCorrect = false
+        }
+        
+        if engineLoad > ReferenceValues.maxEngineLoad {
+            engineLoadCorrect = false
+        }
+        
     }
 }

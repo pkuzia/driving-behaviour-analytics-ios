@@ -58,16 +58,25 @@ class CollectTableViewDriveDataViewController: BaseViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
         
-//        let menuButton = UIButton(type: .custom)
-//        menuButton.setImage(UIImage(named: "menu"), for: .normal)
-//        menuButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        menuButton.addTarget(self, action: #selector(clickMenuButtonHandler), for: .touchUpInside)
-//        let leftItems = UIBarButtonItem(customView: menuButton)
-//
-//        self.navigationItem.setLeftBarButtonItems([leftItems], animated: true)
+        let processButton = UIButton(type: .custom)
+        processButton.setImage(UIImage(named: "process"), for: .normal)
+        processButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        processButton.addTarget(self, action: #selector(clickProcessDataButtonHandler), for: .touchUpInside)
+        let rightItems = UIBarButtonItem(customView: processButton)
+        
+        self.navigationItem.setRightBarButtonItems([rightItems], animated: true)
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     // MARK: - User Interaction
+    
+    func clickProcessDataButtonHandler() {
+        let storyboard = UIStoryboard(storyboard: .Collect)
+        let collectTableViewCalculatedViewController: CollectTableViewCalculatedViewController = storyboard.instantiateViewController()
+        self.navigationController?.pushViewController(collectTableViewCalculatedViewController)
+    }
     
     // MARK: - Additional Helpers
     

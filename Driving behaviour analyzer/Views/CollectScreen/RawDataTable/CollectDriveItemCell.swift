@@ -47,7 +47,7 @@ class CollectDriveItemCell: UITableViewCell {
         driveValue.attributedText = StyleKit.attributedText(text: driveItemData.value.string, attribute: .collectDriveItemData)
         
         latLabel.attributedText = StyleKit.attributedText(text: String(format: "%.06f", driveItemData.lat), attribute: .collectDriveItemData)
-        lngLabel.attributedText = StyleKit.attributedText(text: String(format: "%.06f", driveItemData.lat), attribute: .collectDriveItemData)
+        lngLabel.attributedText = StyleKit.attributedText(text: String(format: "%.06f", driveItemData.lng), attribute: .collectDriveItemData)
         
         let timestamp = driveItemData.timestamp.double / 1000
         if let dateString = dayTimePeriodFormatter?.string(from: Date(timeIntervalSince1970: TimeInterval(timestamp))) {

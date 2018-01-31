@@ -13,14 +13,13 @@ class ReferenceValues {
     // MARK: - Reference Constans
     
     static let maxVehicleSpeedRatio: Int = 5
-    static let minVehicleSpeedRatio: Int = -20
+    static let minVehicleSpeedRatio: Int = -15
     
     static let maxEngineSpeedRatio: Int = 500
+    static let maxEngineLoad: Float = 80.0
     
     static let minVehicleEngineSpeedRatio: Float = 0.5
     static let maxVehicleEngineSpeedRatio: Float = 1.5
     
-    static func maxFuelRailPressure(baseFuelRailPressure: Int) -> Int {
-        return 4 * baseFuelRailPressure
-    }
+    static let maxFuelRailPressure: Float = 4.0
 }

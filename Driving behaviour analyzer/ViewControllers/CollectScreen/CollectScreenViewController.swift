@@ -100,6 +100,17 @@ class CollectScreenViewController: BaseViewController {
         let leftItems = UIBarButtonItem(customView: menuButton)
         
         self.navigationItem.setLeftBarButtonItems([leftItems], animated: true)
+        
+        let dataButton = UIButton(type: .custom)
+        dataButton.setImage(UIImage(named: "data"), for: .normal)
+        dataButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        dataButton.addTarget(self, action: #selector(clickProcessDataButtonHandler), for: .touchUpInside)
+        let rightItems = UIBarButtonItem(customView: dataButton)
+        
+        self.navigationItem.setRightBarButtonItems([rightItems], animated: true)
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationController?.navigationBar.tintColor = UIColor.white
     }
     
     // MARK: - User Interaction
@@ -116,6 +127,14 @@ class CollectScreenViewController: BaseViewController {
     func clickMenuButtonHandler() {
         
     }
+    
+    func clickProcessDataButtonHandler() {
+        collectScreenViewModel.obdIIService.pauseOBD()
+        let storyboard = UIStoryboard(storyboard: .Collect)
+        let collectTableViewDriveDataViewController: CollectTableViewDriveDataViewController = storyboard.instantiateViewController()
+        self.navigationController?.pushViewController(collectTableViewDriveDataViewController)
+    }
+    
     // MARK: - Additional Helpers
     
     func initOBDII() {

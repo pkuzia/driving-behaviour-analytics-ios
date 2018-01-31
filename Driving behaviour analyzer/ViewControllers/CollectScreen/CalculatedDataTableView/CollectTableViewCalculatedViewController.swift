@@ -58,16 +58,26 @@ class CollectTableViewCalculatedViewController: BaseViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.view.backgroundColor = .clear
         
-//        let menuButton = UIButton(type: .custom)
-//        menuButton.setImage(UIImage(named: "menu"), for: .normal)
-//        menuButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        menuButton.addTarget(self, action: #selector(clickMenuButtonHandler), for: .touchUpInside)
-//        let leftItems = UIBarButtonItem(customView: menuButton)
-//
-//        self.navigationItem.setLeftBarButtonItems([leftItems], animated: true)
+        let csvButton = UIButton(type: .custom)
+        csvButton.titleForNormal = collectTableViewCalculatedViewModel.csvButtonTitle
+//        csvButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        csvButton.addTarget(self, action: #selector(clickCSVButtonHandler), for: .touchUpInside)
+        let rightItems = UIBarButtonItem(customView: csvButton)
+        
+        self.navigationItem.setRightBarButtonItems([rightItems], animated: true)
     }
     
     // MARK: - User Interaction
+    
+    func clickCSVButtonHandler() {
+//        let mailVC = MFMailComposeViewController()
+//        mailVC.mailComposeDelegate = self
+//        mailVC.setToRecipients([])
+//        mailVC.setSubject("Driving Behavior analyzer CSV")
+//        mailVC.setMessageBody("", isHTML: false)
+//
+//        presentViewController(mailVC, animated: true, completion: nil)
+    }
     
     // MARK: - Additional Helpers
     

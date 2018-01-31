@@ -40,3 +40,4 @@
 "collect_calculated_table_view_data_header" = "Parameters";
 "collect_calculated_table_view_ratio_header" = "Ratio";
 "collect_calculated_table_view_env_header" = "Environment";
+"collect_calculated_csv_button_title" = "CSV";

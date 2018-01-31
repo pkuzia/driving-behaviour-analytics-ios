@@ -22,6 +22,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
     let calculatedDataCellID = "calculatedDataCell"
     let calculatedDataHeaderID = "calculatedDataHeader"
     let screenTitle = "collect_calculated_table_view_title".localized
+    let csvButtonTitle = "collect_calculated_csv_button_title".localized
     
     var driveItemData: [DriveItemData] = []
     var calculatedData: [CalculatedDriveItem] = []
@@ -57,6 +58,15 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         }
     }
     
+    func convertDataToCSV() -> String {
+        var CSV = ""
+//        for item in calculatedData {
+//
+//        }
+        return CSV
+        
+    }
+    
     fileprivate func appendDriveItemData(item: DriveItemData, index: Int) {
         var vehicleSpeed: Float?
         var engineSpeed: Float?
@@ -83,6 +93,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
                                                            fuelRailPressure: fuelRailPressure.int, timestamp: item.timestamp, position: (lat: item.lat, lng: item.lng))
             //TODO: Mock
             calculatedDriveItem.calculateVehicleEngineSpeedRatio(maxVehicleSpeed: 180, maxRPM: 4500)
+            calculatedDriveItem.calculateFuelRailPressureRatio(baseFuelRailPressure: 26000)
             calculatedData.append(calculatedDriveItem)
         }
     }
@@ -104,7 +115,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
             if currentVehicleSpeed > maxDeltaVehicleSpeed {
                 maxDeltaVehicleSpeed = currentVehicleSpeed
             }
-            
+            currentItem.calculateRangeOfValues()
             index += 1
         }
         return (maxDeltaRPM: maxDeltaRPM.float, maxDeltaVehicleSpeed: maxDeltaVehicleSpeed.float)
