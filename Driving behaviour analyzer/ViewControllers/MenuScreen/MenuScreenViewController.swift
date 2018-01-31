@@ -54,8 +54,11 @@ class MenuScreenViewController: BaseViewController {
     // MARK: - User Interaction
     
     @IBAction func clickCollectButtonHandler(_ sender: Any) {
-        
+        let storyboard = UIStoryboard(storyboard: .Collect)
+        let collectNavigationViewController: CollectNavigationViewController = storyboard.instantiateViewController()
+        self.present(collectNavigationViewController, animated: true, completion: nil)
     }
+    
     // MARK: - Additional Helpers
     
 }

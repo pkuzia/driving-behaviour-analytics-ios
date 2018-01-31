@@ -129,5 +129,7 @@ extension CollectTableViewCalculatedViewController: UITableViewDelegate, UITable
 // MARK: - MFMailComposeViewControllerDelegate
 
 extension CollectTableViewCalculatedViewController: MFMailComposeViewControllerDelegate {
-    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
