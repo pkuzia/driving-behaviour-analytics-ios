@@ -1,4 +1,4 @@
-![](Screenshots/DrivingBehaviourAnalyzerTitle.png)
+![](Screenshots/DrivingBehaviourAnalyzerTitle1.png)
 
 [WIP] An application created as part of the master's thesis analyzing the user driving style using data from the OBDII interface and Machine Learing Core. 
 Driving Behaviour Analyzer consists of two parts:
@@ -28,13 +28,15 @@ determines what type of drive is user.
 
 ## Screenshots
 
-![](Screenshots/DrivingBehaviourAnalyzer1.png)
-![](Screenshots/DrivingBehaviourAnalyzer2.png)
+![](Screenshots/DrivingBehaviourAnalyzerScreen1.png)
+![](Screenshots/DrivingBehaviourAnalyzerScreen2.png)
 ![](Screenshots/DrivingBehaviourAnalyzerGIF.gif)
 
 
 ## Built With
 
+* [XGBoost](https://xgboost.readthedocs.io/en/latest/)
+* [Core ML](https://developer.apple.com/machine-learning/)
 * [SwifterSwift]()
 * [SwiftLint]()
 * [Kingfisher]()
