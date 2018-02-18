@@ -1,6 +1,6 @@
 ![](Screenshots/DrivingBehaviourAnalyzerTitle.png)
 
-[WIP] An application created as part of the master's thesis analyzing the user driving style using data from the OBDII interface and Machine Learing Core. 
+[WIP] An application created as part of the master's thesis analyzing user driving style, using data from the OBD II interface and Machine Learing Core. 
 Driving Behaviour Analyzer consists of two parts:
 
 ### Collecting data
@@ -37,12 +37,11 @@ determines what type of drive is user.
 
 * [XGBoost](https://xgboost.readthedocs.io/en/latest/)
 * [Core ML](https://developer.apple.com/machine-learning/)
-* [SwifterSwift]()
-* [SwiftLint]()
-* [Kingfisher]()
-* [SwiftSpinner]()
-* [Realm]()
-* [RealmSwift]()
-* [ObjectMapper+Realm]()
-* [Moya]()
+* [OBD2-Swift](https://github.com/lemberg/obd2-swift-lib)
+* [SwifterSwift](https://github.com/SwifterSwift/SwifterSwift)
+* [Kingfisher](https://github.com/onevcat/Kingfisher)
+* [SwiftSpinner](https://github.com/icanzilb/SwiftSpinner)
+* [RealmSwift](https://realm.io/docs/swift/latest/)
+* [ObjectMapper+Realm](https://github.com/Jakenberg/ObjectMapper-Realm)
+* [Moya](https://github.com/Moya/Moya)
 

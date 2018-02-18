@@ -20,7 +20,7 @@ pod 'Moya', '~> 8.0'
 
 # # App Logic
 
-pod "OBD2-Swift"
+pod 'OBD2-Swift'
 
 post_install do |installer|
 	swift40Targets = ['SwifterSwift']
