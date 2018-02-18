@@ -1,4 +1,4 @@
-![](Screenshots/DrivingBehaviourAnalyzerTitle1.png)
+![](Screenshots/DrivingBehaviourAnalyzerTitle.png)
 
 [WIP] An application created as part of the master's thesis analyzing the user driving style using data from the OBDII interface and Machine Learing Core. 
 Driving Behaviour Analyzer consists of two parts:
