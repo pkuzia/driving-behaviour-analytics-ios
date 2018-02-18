@@ -11,7 +11,7 @@ The analyzed data are generated into the CSV file and used to trained the machin
 ### Driving Behaviour Analyzer
 
 Part of the application for the user whose driving style will be analyzed. Data from OBD II interface 
-on the test route are are processed and saved in Realm database. Using the trained model and ML Core application
+on the test route are processed and saved in Realm database. Using the trained model and ML Core application
 determines what type of drive is user.
 
 ## Build and Runtime Requirements
