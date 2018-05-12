@@ -55,6 +55,8 @@ class OBDIIService: BaseService {
     var obdIILocationProviderDelegate: OBDIILocationProviderDelegate?
     var obdIIReaderCounter: OBDIIReaderCounter?
     
+    var declaredDataLabel: DriveStyle?
+    
     // MARK: - Functions
     
     func initOBD() {
@@ -149,7 +151,11 @@ class OBDIIService: BaseService {
                 driveItemData.dataTypeEnum = dataType
                 driveItemData.value = value
                 driveItemData.timestamp = Int(NSDate().timeIntervalSince1970 * 1000.0)
-                driveItemData.driveStyleEnum = .optimal
+                if let declaredDataLabel = declaredDataLabel {
+                    driveItemData.driveStyleEnum = declaredDataLabel
+                } else {
+                    driveItemData.driveStyleEnum = .undefined
+                }
                 if let location = obdIILocationProviderDelegate?.currentLocation() {
                     driveItemData.lat = Float(location.latitude)
                     driveItemData.lng = Float(location.longitude)

@@ -10,6 +10,7 @@ pod 'SwiftLint'
 # # UI Staff
 pod 'Kingfisher', '~> 3.0'
 pod 'SwiftSpinner'
+pod 'SCLAlertView'
 
 # # DB & Networking
 pod 'Realm', '~> 2.1'
@@ -23,7 +24,7 @@ pod 'Moya', '~> 8.0'
 pod 'OBD2-Swift'
 
 post_install do |installer|
-	swift40Targets = ['SwifterSwift']
+    swift40Targets = ['SwifterSwift', 'SCLAlertView']
 	
 	installer.pods_project.targets.each do |target|
 		if swift40Targets.include? target.name

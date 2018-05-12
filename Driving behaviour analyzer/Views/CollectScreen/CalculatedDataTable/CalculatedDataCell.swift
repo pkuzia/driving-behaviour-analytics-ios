@@ -86,12 +86,12 @@ class CalculatedDataCell: UITableViewCell {
         }
         
         if let vehicleSpeedDeltaValue = calculatedDriveItem.vehicleSpeedDelta {
-            if calculatedDriveItem.vehicleSpeedCorrect {
-                vehicleSpeedDelta.attributedText = StyleKit.attributedText(text:  "\(vehicleSpeedDeltaValue) km/h",
-                    attribute: .calculatedDriveValueLabel)
-            } else {
+            if !calculatedDriveItem.vehicleSpeedUpCorrect || !calculatedDriveItem.vehicleSpeedDownCorrect {
                 vehicleSpeedDelta.attributedText = StyleKit.attributedText(text:  "\(vehicleSpeedDeltaValue) km/h",
                     attribute: .calculatedDriveValueLabelRed)
+            } else {
+                vehicleSpeedDelta.attributedText = StyleKit.attributedText(text:  "\(vehicleSpeedDeltaValue) km/h",
+                    attribute: .calculatedDriveValueLabel)
             }
         } else {
             vehicleSpeedDelta.attributedText = StyleKit.attributedText(text: "-", attribute: .calculatedDriveValueLabel)

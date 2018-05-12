@@ -35,6 +35,11 @@ class CollectScreenViewModel: BaseViewModel {
     
     let emptyValuePlaceholder = "-"
     
+    let alertTitle = "connection_start_label_title".localized
+    let alertSubtitle = "connection_start_label_subtitle".localized
+    let alertPlaceholder = "connection_start_placeholder".localized
+    let alertSaveButton = "connection_start_save_button".localized
+    
     // MARK: - View Model Data
     
     let obdIIService = OBDIIService()

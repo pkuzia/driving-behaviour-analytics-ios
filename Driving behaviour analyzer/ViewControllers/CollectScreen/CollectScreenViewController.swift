@@ -9,6 +9,7 @@
 import UIKit
 import OBD2
 import CoreLocation
+import SCLAlertView
 
 class CollectScreenViewController: BaseViewController {
     
@@ -113,15 +114,37 @@ class CollectScreenViewController: BaseViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
     }
     
-    // MARK: - User Interaction
+    fileprivate func showConnectAlert() {
+        //TODO: Change color
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alert = SCLAlertView(appearance: appearance)
+        let textField = alert.addTextField(collectScreenViewModel.alertPlaceholder)
+        alert.addButton(collectScreenViewModel.alertSaveButton) {
+            if let label = textField.text, let labelInt = label.int {
+//                self.collectScreenViewModel.obdIIService.declaredDataLabel = DriveStyle(rawValue: labelInt)
+                self.proceedConnection()
+            }
+        }
+        alert.showInfo(collectScreenViewModel.alertTitle, subTitle: collectScreenViewModel.alertSubtitle)
+    }
     
-    @IBAction func clickActionButtonHandler(_ sender: Any) {
+    fileprivate func proceedConnection() {
         switch collectScreenViewModel.connectionState {
         case .notConnected:
             collectScreenViewModel.obdIIService.connectOBD()
         case .connected:
             collectScreenViewModel.obdIIService.requestParameters()
         }
+
+    }
+    
+    // MARK: - User Interaction
+    
+    @IBAction func clickActionButtonHandler(_ sender: Any) {
+        showConnectAlert()
+        
     }
     
     func clickMenuButtonHandler() {

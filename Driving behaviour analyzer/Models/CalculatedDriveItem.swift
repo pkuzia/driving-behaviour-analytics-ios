@@ -27,38 +27,35 @@ class CalculatedDriveItem: NSObject {
     var fuelRailPressureRatio: Float?
     
     var engineSpeedCorrect = true
-    var vehicleSpeedCorrect = true
+    var vehicleSpeedUpCorrect = true
+    var vehicleSpeedDownCorrect = true
     var vehicleEngineSpeedRatioCorrect = true
     var fuelRailPressureRatioCorrect = true
     var engineLoadCorrect = true
     
     var markDangerItem = false
     
+    var vehicleSpeedUpExeeded = 0
+    var vehicleSpeedDownExeeded = 0
+    var engineSpeedExeeded = 0
+    var fuelRailPressureRatioExeeded: Float = 0.0
+    
+    var driveStyle: DriveStyle?
+    
      // MARK: - Initialization
     
     init(engineSpeed: Int, vehicleSpeed: Int, engineLoad: Float, fuelRailPressure: Int, timestamp: Int,
-         position: (lat: Float, lng: Float)) {
+         position: (lat: Float, lng: Float), driveStyle: DriveStyle) {
         self.engineSpeed = engineSpeed
         self.vehicleSpeed = vehicleSpeed
         self.engineLoad = engineLoad
         self.fuelRailPressure = fuelRailPressure
         self.timestamp = timestamp
         self.position = position
+        self.driveStyle = driveStyle
     }
     
      // MARK: - Functions
-    
-    func scoreDriveDangerItem() {
-        var score = 0
-        for item in [engineSpeedCorrect, vehicleSpeedCorrect, vehicleEngineSpeedRatioCorrect, fuelRailPressureRatioCorrect, engineLoadCorrect] {
-            if !item {
-                score += 1
-            }
-        }
-        if score > 1  {
-            markDangerItem = true
-        }
-    }
     
     func convertItemToCSVItem(_ score: String) -> String? {
         if let engineSpeedDelta = engineSpeedDelta, let vehicleSpeedDelta = vehicleSpeedDelta, let vehicleEngineSpeedRatio = vehicleEngineSpeedRatio,
@@ -78,12 +75,18 @@ class CalculatedDriveItem: NSObject {
     
     func calculateRangeOfValues() {
         if let engineSpeedDelta = engineSpeedDelta, engineSpeedDelta > ReferenceValues.maxEngineSpeedRatio {
+            engineSpeedExeeded = engineSpeedDelta - ReferenceValues.maxEngineSpeedRatio
             engineSpeedCorrect = false
         }
         
-        if let vehicleSpeedDelta = vehicleSpeedDelta, vehicleSpeedDelta > ReferenceValues.maxVehicleSpeedRatio ||
-            vehicleSpeedDelta < ReferenceValues.minVehicleSpeedRatio {
-            vehicleSpeedCorrect = false
+        if let vehicleSpeedDelta = vehicleSpeedDelta, vehicleSpeedDelta < ReferenceValues.minVehicleSpeedRatio {
+            vehicleSpeedDownExeeded = abs(vehicleSpeedDelta + ReferenceValues.minVehicleSpeedRatio)
+            vehicleSpeedDownCorrect = false
+        }
+        
+        if let vehicleSpeedDelta = vehicleSpeedDelta, vehicleSpeedDelta > ReferenceValues.maxVehicleSpeedRatio {
+            vehicleSpeedUpExeeded = vehicleSpeedDelta - ReferenceValues.maxVehicleSpeedRatio
+            vehicleSpeedUpCorrect = false
         }
         
         if let vehicleEngineSpeedRatio = vehicleEngineSpeedRatio, vehicleEngineSpeedRatio > ReferenceValues.maxVehicleEngineSpeedRatio ||
@@ -92,6 +95,7 @@ class CalculatedDriveItem: NSObject {
         }
         
         if let fuelRailPressureRatio = fuelRailPressureRatio, fuelRailPressureRatio > ReferenceValues.maxFuelRailPressure {
+            fuelRailPressureRatioExeeded += fuelRailPressureRatio - ReferenceValues.maxFuelRailPressure
             fuelRailPressureRatioCorrect = false
         }
         

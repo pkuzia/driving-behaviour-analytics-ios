@@ -25,6 +25,10 @@
 "connection_state_opening_connection" = "Opening connection";
 "connection_state_initializing" = "Initializing";
 
+"connection_start_label_title" = "Data Label";
+"connection_start_label_subtitle" = "Specify data label";
+"connection_start_placeholder" = "Enter label";
+"connection_start_save_button" = "Save";
 
 /* Collected raw data table */
 

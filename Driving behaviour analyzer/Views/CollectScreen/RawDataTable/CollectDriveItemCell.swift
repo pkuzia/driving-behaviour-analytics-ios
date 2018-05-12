@@ -54,7 +54,7 @@ class CollectDriveItemCell: UITableViewCell {
             timeLabel.attributedText = StyleKit.attributedText(text: dateString, attribute: .collectDriveItemData)
         }
         
-        driveStyleLabel.attributedText = StyleKit.attributedText(text: driveItemData.driveStyle, attribute: .collectDriveItemData)
+//        driveStyleLabel.attributedText = StyleKit.attributedText(text: driveItemData.driveStyle.string, attribute: .collectDriveItemData)
     }
 
 }

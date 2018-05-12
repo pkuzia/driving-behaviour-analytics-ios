@@ -47,30 +47,6 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         }
     }
     
-    func scoreCalculatedData() -> Int {
-        var dangerItems = 0
-        for item in calculatedData {
-            item.scoreDriveDangerItem()
-            if item.markDangerItem {
-                dangerItems += 1
-            }
-        }
-        let percent: Double = dangerItems.double * 100 / calculatedData.count.double
-        
-        if percent < ReferenceValues.firstScoreCeil {
-            return 1
-        }
-        
-        if percent < ReferenceValues.secondScoreCeil {
-            return 2
-        }
-        
-        if percent < ReferenceValues.thirdScoreCeil {
-            return 3
-        }
-        return 4
-    }
-    
     fileprivate func fetchData(completionHandler: (_ complete: Bool) -> ()) {
         do {
             let realm = try Realm()
@@ -83,14 +59,87 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
     }
     
     func convertDataToCSV() -> String {
-        var CSV = ""
-        let score = scoreCalculatedData()
+        var engineSpeedRangeInvalid = 0
+        var vehicleSpeedRangeUpInvalid = 0
+        var vehicleSpeedRangeDownInvalid = 0
+        var vehicleEngineSpeedRangeInvalid = 0
+        var engineLoadRangeInvalid = 0
+        var fuelRailPressureRangeInvalid = 0
+
+        var vehicleSpeedUpExceeded = 0
+        var vehicleSpeedDownExceeded = 0
+        var engineSpeedExceeded = 0
+        var fuelRailPressureExceeded: Float = 0.0
+        
+        var driveStyle: DriveStyle = .optimal
         for item in calculatedData {
-            if let itemCSV = item.convertItemToCSVItem(score.string) {
-                CSV += itemCSV
+            
+            if let driveStyleItem = item.driveStyle {
+                driveStyle = driveStyleItem
+            }
+            /* Engine speed */
+            if !item.engineSpeedCorrect {
+                engineSpeedRangeInvalid += 1
+                engineSpeedExceeded += engineSpeedExeededItem
+            }
+            
+            /* Vehicle speed */
+            if !item.vehicleSpeedUpCorrect {
+                vehicleSpeedRangeUpInvalid += 1
+                vehicleSpeedUpExceeded += vehicleSpeedUpExeededItem
+            }
+            if !item.vehicleSpeedDownCorrect {
+                vehicleSpeedRangeDownInvalid += 1
+                vehicleSpeedDownExceeded += vehicleSpeedDownExeededItem
+            }
+            
+            /* Fuel Rail Pressure */
+            if !item.fuelRailPressureRatioCorrect {
+                fuelRailPressureRangeInvalid += 1
+                fuelRailPressureExceeded += fuelRailPressureRatioExeededItem
+            }
+            
+            /* Engine load */
+            if !item.engineLoadCorrect {
+                engineLoadRangeInvalid += 1
+            }
+            
+            /* Vehicle engine speed ratio */
+            if !item.fuelRailPressureRatioCorrect {
+                vehicleEngineSpeedRangeInvalid += 1
             }
         }
-        return CSV
+        
+        let calculatedDataElements = calculatedData.count.float
+        
+        let engineSpeedRangeInvalidParam = engineSpeedRangeInvalid.float / calculatedDataElements
+        let vehicleSpeedRangeInvalidParam = (vehicleSpeedRangeUpInvalid + vehicleSpeedRangeDownInvalid).float / calculatedDataElements
+        let vehicleEngineSpeedRangeInvalidParam = vehicleEngineSpeedRangeInvalid.float / calculatedDataElements
+        let engineLoadRangeInvalidParam = engineLoadRangeInvalid.float / calculatedDataElements
+        let fuelRailPressureRangeInvalidParam = fuelRailPressureRangeInvalid.float / calculatedDataElements
+        
+        var vehicleSpeedUpExceededAverage: Float = 0
+        var vehicleSpeedDownExceededAverage: Float = 0
+        var engineSpeedExceededAverage: Float = 0
+        var fuelRailPressureExceededAverage: Float = 0
+        
+        if vehicleSpeedRangeUpInvalid != 0 {
+            vehicleSpeedUpExceededAverage = vehicleSpeedUpExceeded.float / vehicleSpeedRangeUpInvalid.float
+        }
+        
+        if vehicleSpeedRangeDownInvalid != 0 {
+            vehicleSpeedDownExceededAverage = vehicleSpeedDownExceeded.float / vehicleSpeedRangeDownInvalid.float
+        }
+        
+        if engineSpeedRangeInvalid != 0 {
+            engineSpeedExceededAverage = engineSpeedExceeded.float / engineSpeedRangeInvalid.float
+        }
+        
+        if fuelRailPressureRangeInvalid != 0 {
+            fuelRailPressureExceededAverage = fuelRailPressureExceeded / fuelRailPressureRangeInvalid.float
+        }
+        
+        return "\(driveStyle.rawValue), 1:\(engineSpeedRangeInvalidParam), 2:\(vehicleSpeedRangeInvalidParam), 3:\(vehicleEngineSpeedRangeInvalidParam), 4:\(engineLoadRangeInvalidParam), 5:\(fuelRailPressureRangeInvalidParam), 6:\(vehicleSpeedUpExceededAverage), 7:\(vehicleSpeedDownExceededAverage), 8:\(engineSpeedExceededAverage), 9:\(fuelRailPressureExceededAverage)"
     }
     
     fileprivate func appendDriveItemData(item: DriveItemData, index: Int) {
@@ -116,7 +165,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         }
         if let vehicleSpeed = vehicleSpeed, let engineSpeed = engineSpeed, let engineLoad = engineLoad, let fuelRailPressure = fuelRailPressure {
             let calculatedDriveItem = CalculatedDriveItem(engineSpeed: engineSpeed.int, vehicleSpeed: vehicleSpeed.int, engineLoad: engineLoad,
-                                                           fuelRailPressure: fuelRailPressure.int, timestamp: item.timestamp, position: (lat: item.lat, lng: item.lng))
+                                                          fuelRailPressure: fuelRailPressure.int, timestamp: item.timestamp, position: (lat: item.lat, lng: item.lng), driveStyle: item.driveStyleEnum)
             //TODO: Mock
             calculatedDriveItem.calculateVehicleEngineSpeedRatio(maxVehicleSpeed: 180, maxRPM: 4500)
             calculatedDriveItem.calculateFuelRailPressureRatio(baseFuelRailPressure: 26000)
