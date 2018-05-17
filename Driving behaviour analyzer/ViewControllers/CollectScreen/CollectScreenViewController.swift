@@ -121,10 +121,14 @@ class CollectScreenViewController: BaseViewController {
         )
         let alert = SCLAlertView(appearance: appearance)
         let textField = alert.addTextField(collectScreenViewModel.alertPlaceholder)
+        alert.addButton(collectScreenViewModel.clearDataButton) {
+            self.collectScreenViewModel.clearData()
+        }
+        
         alert.addButton(collectScreenViewModel.alertSaveButton) {
             if let label = textField.text, let labelInt = label.int {
-//                self.collectScreenViewModel.obdIIService.declaredDataLabel = DriveStyle(rawValue: labelInt)
-                self.proceedConnection()
+                self.collectScreenViewModel.obdIIService.declaredDataLabel = DriveStyle(rawValue: labelInt)
+                self.collectScreenViewModel.obdIIService.connectOBD()
             }
         }
         alert.showInfo(collectScreenViewModel.alertTitle, subTitle: collectScreenViewModel.alertSubtitle)
@@ -133,17 +137,16 @@ class CollectScreenViewController: BaseViewController {
     fileprivate func proceedConnection() {
         switch collectScreenViewModel.connectionState {
         case .notConnected:
-            collectScreenViewModel.obdIIService.connectOBD()
+            showConnectAlert()
         case .connected:
             collectScreenViewModel.obdIIService.requestParameters()
         }
-
     }
     
     // MARK: - User Interaction
     
     @IBAction func clickActionButtonHandler(_ sender: Any) {
-        showConnectAlert()
+        proceedConnection()
         
     }
     

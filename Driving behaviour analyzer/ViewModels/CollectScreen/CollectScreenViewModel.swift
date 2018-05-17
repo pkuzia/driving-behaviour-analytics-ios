@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import RealmSwift
 
 protocol CollectScreenViewModelDelegate: class {
     
@@ -39,6 +40,7 @@ class CollectScreenViewModel: BaseViewModel {
     let alertSubtitle = "connection_start_label_subtitle".localized
     let alertPlaceholder = "connection_start_placeholder".localized
     let alertSaveButton = "connection_start_save_button".localized
+    let clearDataButton = "connection_clear_data_button".localized
     
     // MARK: - View Model Data
     
@@ -57,6 +59,17 @@ class CollectScreenViewModel: BaseViewModel {
     
     fileprivate func setOBDIIServiceDelegate() {
         obdIIService.obdIILocationProviderDelegate = self
+    }
+    
+    func clearData() {
+        do {
+            let realm = try Realm()
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch _ {
+            
+        }
     }
 }
 

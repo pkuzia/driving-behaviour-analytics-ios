@@ -11,6 +11,10 @@
 "analyze_button_title" = "Analyze ride";
 "collect_button_title" = "Collect data";
 
+/* Analyze screen */
+
+"analyze_screen_title" = "Analyze ride";
+
 /* Collect screen */
 
 "collect_screen_title" = "Collect data";
@@ -29,6 +33,7 @@
 "connection_start_label_subtitle" = "Specify data label";
 "connection_start_placeholder" = "Enter label";
 "connection_start_save_button" = "Save";
+"connection_clear_data_button" = "Clear data";
 
 /* Collected raw data table */
 

@@ -59,6 +59,12 @@ class MenuScreenViewController: BaseViewController {
         self.present(collectNavigationViewController, animated: true, completion: nil)
     }
     
+    @IBAction func clickAnalyzeButtonHandler(_ sender: Any) {
+        let storyboard = UIStoryboard(storyboard: .Analyze)
+        let analyzeMapNavigationController: AnalyzeMapNavigationController = storyboard.instantiateViewController()
+        self.present(analyzeMapNavigationController, animated: true, completion: nil)
+    }
+    
     // MARK: - Additional Helpers
     
 }

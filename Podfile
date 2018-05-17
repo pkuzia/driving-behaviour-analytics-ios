@@ -22,6 +22,7 @@ pod 'Moya', '~> 8.0'
 # # App Logic
 
 pod 'OBD2-Swift'
+pod 'GoogleMaps'
 
 post_install do |installer|
     swift40Targets = ['SwifterSwift', 'SCLAlertView']

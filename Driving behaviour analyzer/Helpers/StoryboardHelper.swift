@@ -11,7 +11,7 @@ import UIKit
 extension UIStoryboard {
     
     enum Storyboard: String {
-        case Main, Collect
+        case Main, Collect, Analyze
     }
     
     convenience init(storyboard: Storyboard, bundle: Bundle? = nil) {

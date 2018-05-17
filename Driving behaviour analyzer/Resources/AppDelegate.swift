@@ -6,16 +6,17 @@
 //  Copyright (c) 2017 Pkuzia. All rights reserved.
 //
 import UIKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]?) -> Bool {
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = .lightContent
+        GMSServices.provideAPIKey("AIzaSyAlhgG6UW_hNgIAtbxr8OJduzXUaAI4C9Q")
         return true
     }
     

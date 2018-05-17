@@ -20,11 +20,11 @@ enum DataType: String {
     static let dataTypes = [engineLoad, engineSpeed, vehicleSpeed, fuelRailPressure]
 }
 
-enum DriveStyle: String {
-    case soft = "Soft"
-    case optimal = "Optimal"
-    case hard = "Hard"
-    case undefined = "Undefined"
+enum DriveStyle: Int {
+    case soft = 0
+    case optimal = 1
+    case hard = 2
+    case undefined = 3
     
     static let dataTypes = [soft, optimal, hard]
 }

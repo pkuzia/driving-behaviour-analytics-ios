@@ -80,23 +80,23 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
             /* Engine speed */
             if !item.engineSpeedCorrect {
                 engineSpeedRangeInvalid += 1
-                engineSpeedExceeded += engineSpeedExeededItem
+                engineSpeedExceeded += item.engineSpeedExeeded
             }
             
             /* Vehicle speed */
             if !item.vehicleSpeedUpCorrect {
                 vehicleSpeedRangeUpInvalid += 1
-                vehicleSpeedUpExceeded += vehicleSpeedUpExeededItem
+                vehicleSpeedUpExceeded += item.vehicleSpeedUpExeeded
             }
             if !item.vehicleSpeedDownCorrect {
                 vehicleSpeedRangeDownInvalid += 1
-                vehicleSpeedDownExceeded += vehicleSpeedDownExeededItem
+                vehicleSpeedDownExceeded += item.vehicleSpeedDownExeeded
             }
             
             /* Fuel Rail Pressure */
             if !item.fuelRailPressureRatioCorrect {
                 fuelRailPressureRangeInvalid += 1
-                fuelRailPressureExceeded += fuelRailPressureRatioExeededItem
+                fuelRailPressureExceeded += item.fuelRailPressureRatioExeeded
             }
             
             /* Engine load */

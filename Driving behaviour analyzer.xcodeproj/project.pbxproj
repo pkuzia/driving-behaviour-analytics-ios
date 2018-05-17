@@ -33,6 +33,10 @@
 		97E5EFEA1FEC1A6E00358375 /* MenuScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFE91FEC1A6E00358375 /* MenuScreenViewController.swift */; };
 		97E5EFED1FEC1A8E00358375 /* MenuScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFEC1FEC1A8E00358375 /* MenuScreenViewModel.swift */; };
 		97E5EFEF1FEC1CDA00358375 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E5EFEE1FEC1CDA00358375 /* StyleKit.swift */; };
+		A5D2AB2920AD74A30037EE0A /* Analyze.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D2AB2820AD74A30037EE0A /* Analyze.storyboard */; };
+		A5D2AB2B20AD75020037EE0A /* AnalyzeMapScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2AB2A20AD75020037EE0A /* AnalyzeMapScreenViewController.swift */; };
+		A5D2AB2E20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2AB2D20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift */; };
+		A5D2AB3020AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2AB2F20AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift */; };
 		BB6C33D196D5E180AC257D3F /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A881B67132743707E1167 /* StoryboardHelper.swift */; };
 		BB7262A79599BAF5D20AACCA /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 6B16937B566C67FC7AD5C5E6 /* Localizable.strings */; };
 		D0208F0CE96D671FA33679F1 /* Pods_Driving_behaviour_analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529B1AC1C2C7876057000073 /* Pods_Driving_behaviour_analyzer.framework */; };
@@ -79,6 +83,10 @@
 		97E5EFEC1FEC1A8E00358375 /* MenuScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewModel.swift; sourceTree = "<group>"; };
 		97E5EFEE1FEC1CDA00358375 /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		9FAB6042780CC7D1006FCEA1 /* Driving behaviour analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Driving behaviour analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D2AB2820AD74A30037EE0A /* Analyze.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Analyze.storyboard; sourceTree = "<group>"; };
+		A5D2AB2A20AD75020037EE0A /* AnalyzeMapScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeMapScreenViewController.swift; sourceTree = "<group>"; };
+		A5D2AB2D20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeMapScreenViewModel.swift; sourceTree = "<group>"; };
+		A5D2AB2F20AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeMapNavigationController.swift; sourceTree = "<group>"; };
 		A824F4AB13B12E02FD0F8205 /* Pods-Driving behaviour analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driving behaviour analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Driving behaviour analyzer/Pods-Driving behaviour analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		AA3A881B67132743707E1167 /* StoryboardHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StoryboardHelper.swift; sourceTree = "<group>"; };
 		AB5AFF2662EBA9D32EB764E5 /* RestClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 		1C54578A4A84E5717F85BF4D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A501BF8920AA074A00E0F13C /* AnalyzeMapScreen */,
 				974444C61FF2CF4A002CE2BF /* CollectScreen */,
 				97E5EFE81FEC1A1D00358375 /* MenuScreen */,
 			);
@@ -199,6 +208,7 @@
 			children = (
 				FB1824C075708B2637C8F90E /* Menu.storyboard */,
 				974444C41FF2CEFA002CE2BF /* Collect.storyboard */,
+				A5D2AB2820AD74A30037EE0A /* Analyze.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -329,11 +339,29 @@
 		A3FFDB1283FB70CBB080F8CC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A5D2AB2C20AD751E0037EE0A /* AnalyzeMapScreen */,
 				974444CB1FF2CFB4002CE2BF /* CollectScreen */,
 				97E5EFEB1FEC1A7C00358375 /* MenuScreen */,
 				C585B480675D82004C137668 /* BaseViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A501BF8920AA074A00E0F13C /* AnalyzeMapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A5D2AB2A20AD75020037EE0A /* AnalyzeMapScreenViewController.swift */,
+				A5D2AB2F20AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift */,
+			);
+			path = AnalyzeMapScreen;
+			sourceTree = "<group>";
+		};
+		A5D2AB2C20AD751E0037EE0A /* AnalyzeMapScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A5D2AB2D20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift */,
+			);
+			path = AnalyzeMapScreen;
 			sourceTree = "<group>";
 		};
 		B91018143FA177887EB33484 = {
@@ -448,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECE270840803C467C7CA9FBC /* Images.xcassets in Resources */,
+				A5D2AB2920AD74A30037EE0A /* Analyze.storyboard in Resources */,
 				F87438292463D02AB1726D84 /* Menu.storyboard in Resources */,
 				974444C51FF2CEFA002CE2BF /* Collect.storyboard in Resources */,
 			);
@@ -483,13 +512,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Driving behaviour analyzer-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6265A3EC18035523B2CD9101 /* [CP] Copy Pods Resources */ = {
@@ -498,9 +530,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Driving behaviour analyzer/Pods-Driving behaviour analyzer-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -513,9 +548,36 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Driving behaviour analyzer/Pods-Driving behaviour analyzer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/OBD2-Swift/OBD2.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView/SCLAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
+				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OBD2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -540,6 +602,7 @@
 				9798AEBE2021021D00742ECB /* ReferenceValues.swift in Sources */,
 				67DDB6DE58DF0BC2EFE900EC /* BaseService.swift in Sources */,
 				97490854201E55E700C7D7D1 /* CollectDriveItemCell.swift in Sources */,
+				A5D2AB2E20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift in Sources */,
 				977AA6ED201F3D5000C8051E /* CalculatedDataCell.swift in Sources */,
 				97E5EFED1FEC1A8E00358375 /* MenuScreenViewModel.swift in Sources */,
 				97E5EFEA1FEC1A6E00358375 /* MenuScreenViewController.swift in Sources */,
@@ -547,7 +610,9 @@
 				9716261E201F355600908108 /* CollectTableViewCalculatedViewController.swift in Sources */,
 				971EA0FD1FF1140E000BE731 /* OBDIIService.swift in Sources */,
 				97490858201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift in Sources */,
+				A5D2AB3020AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift in Sources */,
 				977AA6F1201F488F00C8051E /* CalculatedDriveItem.swift in Sources */,
+				A5D2AB2B20AD75020037EE0A /* AnalyzeMapScreenViewController.swift in Sources */,
 				9563E667451E310C751AD8E5 /* BaseViewModel.swift in Sources */,
 				20E817BBC5C110F88916E16F /* BaseViewController.swift in Sources */,
 				974444C81FF2CF71002CE2BF /* CollectNavigationViewController.swift in Sources */,
