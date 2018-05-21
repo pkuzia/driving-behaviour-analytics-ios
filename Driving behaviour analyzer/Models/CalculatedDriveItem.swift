@@ -57,10 +57,10 @@ class CalculatedDriveItem: NSObject {
     
      // MARK: - Functions
     
-    func convertItemToCSVItem(_ score: String) -> String? {
+    func convertItemToCSVItem() -> String? {
         if let engineSpeedDelta = engineSpeedDelta, let vehicleSpeedDelta = vehicleSpeedDelta, let vehicleEngineSpeedRatio = vehicleEngineSpeedRatio,
             let fuelRailPressureRatio = fuelRailPressureRatio {
-            return "\(engineSpeedDelta), \(vehicleSpeedDelta), \(vehicleEngineSpeedRatio), \(fuelRailPressureRatio), \(engineLoad), \(score)\n"
+            return "\(engineSpeedDelta), \(vehicleSpeedDelta), \(vehicleEngineSpeedRatio), \(fuelRailPressureRatio), \(engineLoad) \n"
         }
         return nil
     }

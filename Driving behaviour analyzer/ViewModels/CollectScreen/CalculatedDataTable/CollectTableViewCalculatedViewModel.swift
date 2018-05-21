@@ -72,6 +72,8 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         var fuelRailPressureExceeded: Float = 0.0
         
         var driveStyle: DriveStyle = .optimal
+        var dataListCSV = ""
+        
         for item in calculatedData {
             
             if let driveStyleItem = item.driveStyle {
@@ -108,15 +110,18 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
             if !item.fuelRailPressureRatioCorrect {
                 vehicleEngineSpeedRangeInvalid += 1
             }
+            if let itemCSV = item.convertItemToCSVItem() {
+                dataListCSV += itemCSV
+            }
         }
         
         let calculatedDataElements = calculatedData.count.float
         
-        let engineSpeedRangeInvalidParam = engineSpeedRangeInvalid.float / calculatedDataElements
-        let vehicleSpeedRangeInvalidParam = (vehicleSpeedRangeUpInvalid + vehicleSpeedRangeDownInvalid).float / calculatedDataElements
-        let vehicleEngineSpeedRangeInvalidParam = vehicleEngineSpeedRangeInvalid.float / calculatedDataElements
-        let engineLoadRangeInvalidParam = engineLoadRangeInvalid.float / calculatedDataElements
-        let fuelRailPressureRangeInvalidParam = fuelRailPressureRangeInvalid.float / calculatedDataElements
+        let engineSpeedRangeInvalidParam = engineSpeedRangeInvalid.float / calculatedDataElements * 100
+        let vehicleSpeedRangeInvalidParam = (vehicleSpeedRangeUpInvalid + vehicleSpeedRangeDownInvalid).float / calculatedDataElements * 100
+        let vehicleEngineSpeedRangeInvalidParam = vehicleEngineSpeedRangeInvalid.float / calculatedDataElements * 100
+        let engineLoadRangeInvalidParam = engineLoadRangeInvalid.float / calculatedDataElements * 100
+        let fuelRailPressureRangeInvalidParam = fuelRailPressureRangeInvalid.float / calculatedDataElements * 100
         
         var vehicleSpeedUpExceededAverage: Float = 0
         var vehicleSpeedDownExceededAverage: Float = 0
@@ -139,7 +144,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
             fuelRailPressureExceededAverage = fuelRailPressureExceeded / fuelRailPressureRangeInvalid.float
         }
         
-        return "\(driveStyle.rawValue), 1:\(engineSpeedRangeInvalidParam), 2:\(vehicleSpeedRangeInvalidParam), 3:\(vehicleEngineSpeedRangeInvalidParam), 4:\(engineLoadRangeInvalidParam), 5:\(fuelRailPressureRangeInvalidParam), 6:\(vehicleSpeedUpExceededAverage), 7:\(vehicleSpeedDownExceededAverage), 8:\(engineSpeedExceededAverage), 9:\(fuelRailPressureExceededAverage)"
+        return "\(driveStyle.rawValue), 1:\(engineSpeedRangeInvalidParam), 2:\(vehicleSpeedRangeInvalidParam), 3:\(vehicleEngineSpeedRangeInvalidParam), 4:\(engineLoadRangeInvalidParam), 5:\(fuelRailPressureRangeInvalidParam), 6:\(vehicleSpeedUpExceededAverage), 7:\(vehicleSpeedDownExceededAverage), 8:\(engineSpeedExceededAverage), 9:\(fuelRailPressureExceededAverage) \n \(dataListCSV)"
     }
     
     fileprivate func appendDriveItemData(item: DriveItemData, index: Int) {

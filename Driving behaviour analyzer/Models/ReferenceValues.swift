@@ -13,7 +13,7 @@ class ReferenceValues {
     // MARK: - Reference Constans
     
     static let maxVehicleSpeedRatio: Int = 5
-    static let minVehicleSpeedRatio: Int = -15
+    static let minVehicleSpeedRatio: Int = -10
     
     static let maxEngineSpeedRatio: Int = 500
     static let maxEngineLoad: Float = 80.0
