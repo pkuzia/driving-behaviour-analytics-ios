@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MessageUI
 
 class DataGeneratorViewController: BaseViewController {
     
     // MARK: - Outlets
+    
+    let dataGeneratorViewModel = DataGeneratorViewModel()
     
     // MARK: - View Lifecycle
 
@@ -34,7 +37,14 @@ class DataGeneratorViewController: BaseViewController {
     // MARK: - Appearance
     
     func initUI() {
+        let CSV = dataGeneratorViewModel.generateData()
+        let mailVC = MFMailComposeViewController()
+        mailVC.mailComposeDelegate = self
+        mailVC.setToRecipients([])
+        mailVC.setSubject("Driving Behavior analyzer CSV")
+        mailVC.setMessageBody(CSV, isHTML: false)
         
+        present(mailVC, animated: true, completion: nil)
     }
     
     // MARK: - User Interaction
@@ -48,4 +58,13 @@ class DataGeneratorViewController: BaseViewController {
 extension DataGeneratorViewController: DataGeneratorViewModelDelegate {
     
 }
+
+// MARK: - MFMailComposeViewControllerDelegate
+
+extension DataGeneratorViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
 

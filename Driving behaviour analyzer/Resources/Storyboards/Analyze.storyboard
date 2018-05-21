@@ -71,7 +71,7 @@
         <!--Data Generator View Controller-->
         <scene sceneID="Mh3-Bf-aaH">
             <objects>
-                <viewController id="cVB-We-Q9a" customClass="DataGeneratorViewController" customModule="Driving_behaviour_analyzer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DataGeneratorViewController" id="cVB-We-Q9a" customClass="DataGeneratorViewController" customModule="Driving_behaviour_analyzer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9tu-OW-tFl" customClass="DataG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
