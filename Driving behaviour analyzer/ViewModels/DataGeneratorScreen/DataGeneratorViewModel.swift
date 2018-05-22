@@ -197,7 +197,8 @@ class DataGeneratorViewModel: BaseViewModel {
     }
     
     func generateStyleData(driveStyle: DriveStyle) -> String {
-        return "\(driveStyle.rawValue), 1:\(engineSpeed(driveStyle: driveStyle)), 2:\(vehicleSpeed(driveStyle: driveStyle)), 3:\(vehicleEngineSpeed(driveStyle: driveStyle)), 4:\(engineLoad(driveStyle: driveStyle)), 5:\(fuelRailPressure(driveStyle: driveStyle)), 6:\(vehicleSpeedUpExceeded(driveStyle: driveStyle)), 7:\(vehicleSpeedDownExceeded(driveStyle: driveStyle)), 8:\(engineSpeedExceeded(driveStyle: driveStyle)), 9:\(fuelRailPressureExceeded(driveStyle: driveStyle)) \n"
+        lastGenerated = driveStyle
+        return "\(driveStyle.rawValue) 1:\(engineSpeed(driveStyle: driveStyle)) 2:\(vehicleSpeed(driveStyle: driveStyle)) 3:\(vehicleEngineSpeed(driveStyle: driveStyle)) 4:\(engineLoad(driveStyle: driveStyle)) 5:\(fuelRailPressure(driveStyle: driveStyle)) 6:\(vehicleSpeedUpExceeded(driveStyle: driveStyle)) 7:\(vehicleSpeedDownExceeded(driveStyle: driveStyle)) 8:\(engineSpeedExceeded(driveStyle: driveStyle)) 9:\(fuelRailPressureExceeded(driveStyle: driveStyle)) \n"
     }
     
     fileprivate func randomValueBeetween(firstNum: Double, secondNum: Double) -> String {
