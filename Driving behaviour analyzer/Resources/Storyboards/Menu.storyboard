@@ -14,7 +14,7 @@
         <!--Menu Screen View Controller-->
         <scene sceneID="8tR-lX-lcI">
             <objects>
-                <viewController id="xVJ-ds-P5Y" customClass="MenuScreenViewController" customModule="Driving_behaviour_analyzer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuScreenViewController" id="xVJ-ds-P5Y" customClass="MenuScreenViewController" customModule="Driving_behaviour_analyzer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="C2C-Kg-0rU"/>
                         <viewControllerLayoutGuide type="bottom" id="neL-4J-frV"/>

@@ -37,6 +37,7 @@
 		A5D2AB2B20AD75020037EE0A /* AnalyzeMapScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2AB2A20AD75020037EE0A /* AnalyzeMapScreenViewController.swift */; };
 		A5D2AB2E20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2AB2D20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift */; };
 		A5D2AB3020AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2AB2F20AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift */; };
+		A8ADE81920C562CD007D0BE3 /* ParametersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ADE81820C562CD007D0BE3 /* ParametersView.swift */; };
 		A8DBA1B220B2D74D00EFD49D /* DataGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBA1B120B2D74D00EFD49D /* DataGeneratorViewController.swift */; };
 		A8DBA1B420B2D76B00EFD49D /* DataGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBA1B320B2D76B00EFD49D /* DataGeneratorViewModel.swift */; };
 		BB6C33D196D5E180AC257D3F /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A881B67132743707E1167 /* StoryboardHelper.swift */; };
@@ -90,6 +91,7 @@
 		A5D2AB2D20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeMapScreenViewModel.swift; sourceTree = "<group>"; };
 		A5D2AB2F20AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyzeMapNavigationController.swift; sourceTree = "<group>"; };
 		A824F4AB13B12E02FD0F8205 /* Pods-Driving behaviour analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Driving behaviour analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Driving behaviour analyzer/Pods-Driving behaviour analyzer.debug.xcconfig"; sourceTree = "<group>"; };
+		A8ADE81820C562CD007D0BE3 /* ParametersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersView.swift; sourceTree = "<group>"; };
 		A8DBA1B120B2D74D00EFD49D /* DataGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGeneratorViewController.swift; sourceTree = "<group>"; };
 		A8DBA1B320B2D76B00EFD49D /* DataGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGeneratorViewModel.swift; sourceTree = "<group>"; };
 		AA3A881B67132743707E1167 /* StoryboardHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StoryboardHelper.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		998CC4C5409976F8AFBDF6E3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A8ADE81520C56276007D0BE3 /* AnalyzeScreen */,
 				97490852201E55BE00C7D7D1 /* CollectScreen */,
 			);
 			path = Views;
@@ -384,6 +387,14 @@
 				A8DBA1B320B2D76B00EFD49D /* DataGeneratorViewModel.swift */,
 			);
 			path = DataGeneratorScreen;
+			sourceTree = "<group>";
+		};
+		A8ADE81520C56276007D0BE3 /* AnalyzeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A8ADE81820C562CD007D0BE3 /* ParametersView.swift */,
+			);
+			path = AnalyzeScreen;
 			sourceTree = "<group>";
 		};
 		B91018143FA177887EB33484 = {
@@ -632,6 +643,7 @@
 				9739934E2001025D00752946 /* DriveItemData.swift in Sources */,
 				9716261E201F355600908108 /* CollectTableViewCalculatedViewController.swift in Sources */,
 				971EA0FD1FF1140E000BE731 /* OBDIIService.swift in Sources */,
+				A8ADE81920C562CD007D0BE3 /* ParametersView.swift in Sources */,
 				97490858201E570100C7D7D1 /* CollectTableViewDriveDataViewModel.swift in Sources */,
 				A5D2AB3020AD7DBA0037EE0A /* AnalyzeMapNavigationController.swift in Sources */,
 				977AA6F1201F488F00C8051E /* CalculatedDriveItem.swift in Sources */,

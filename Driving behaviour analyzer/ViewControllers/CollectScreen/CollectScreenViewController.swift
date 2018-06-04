@@ -151,7 +151,9 @@ class CollectScreenViewController: BaseViewController {
     }
     
     func clickMenuButtonHandler() {
-        
+        let storyboard = UIStoryboard(storyboard: .Menu)
+        let menuScreenViewController: MenuScreenViewController = storyboard.instantiateViewController()
+        self.present(menuScreenViewController, animated: true, completion: nil)
     }
     
     func clickProcessDataButtonHandler() {
