@@ -24,14 +24,22 @@ class AnalyzeMapScreenViewModel: BaseViewModel {
     let connectButtonTitle = "analyze_connect_button".localized
     let startButtonTitle = "analyze_start_button".localized
     let stopButtonTitle = "analyze_stop_button".localized
-    let zeroTime = "0:00:00"
+    let zeroTime = "00:00"
     
     // MARK: - View Model Data
     
     weak var delegate: AnalyzeMapScreenViewModelDelegate?
     var analyzeState: AnalyzeState = .idle
+    let obdIIService = OBDIIService()
+    var timer = 0
     
     // MARK: - Functions
+    
+    func driveTime() -> String {
+        let sec = timer % 3600 % 60
+        let minutes = timer % 3600 / 60
+        return String(format: "%02u:%02u", minutes, sec)
+    }
 }
 
 
