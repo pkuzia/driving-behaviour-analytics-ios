@@ -32,9 +32,7 @@ private extension String {
 }
 
 public enum RestClient {
-    case zen
-    case userProfile(String)
-    case userRepositories(String)
+    case classification(ClassificationRequest)
 }
 
 extension RestClient: TargetType {
@@ -42,12 +40,8 @@ extension RestClient: TargetType {
     
     public var path: String {
         switch self {
-        case .zen:
+        case .classification:
             return "/zen"
-        case .userProfile(let name):
-            return "/users/\(name.urlEscapedString)"
-        case .userRepositories(let name):
-            return "/users/\(name.urlEscapedString)/repos"
         }
     }
     
@@ -57,10 +51,8 @@ extension RestClient: TargetType {
     
     public var parameters: [String: Any]? {
         switch self {
-        case .userRepositories(_):
-            return ["sort": "pushed"]
-        default:
-            return nil
+        case .classification(let classificationRequest):
+            return classificationRequest.getParameters()
         }
     }
     
@@ -74,21 +66,15 @@ extension RestClient: TargetType {
     
     public var validate: Bool {
         switch self {
-        case .zen:
+        case .classification:
             return true
-        default:
-            return false
         }
     }
     
     public var sampleData: Data {
         switch self {
-        case .zen:
+        default:
             return "Half measures are as bad as nothing at all.".data(using: String.Encoding.utf8)!
-        case .userProfile(let name):
-            return "{\"login\": \"\(name)\", \"id\": 100}".data(using: String.Encoding.utf8)!
-        case .userRepositories(_):
-            return "[{\"name\": \"Repo Name\"}]".data(using: String.Encoding.utf8)!
         }
     }
 }
