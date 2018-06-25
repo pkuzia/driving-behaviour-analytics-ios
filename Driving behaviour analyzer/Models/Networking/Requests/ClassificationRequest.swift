@@ -10,14 +10,14 @@ import Foundation
 
 public class ClassificationRequest: BaseRequestModel {
     
-    var elements: [String: Any]
+    var elements: String
     
-    init(elements: [String: Any]) {
+    init(elements: String) {
         self.elements = elements
     }
     
     fileprivate func getParametersBody() -> [String: Any]? {
-        return ["elements": elements]
+        return ["data": elements]
     }
     
     fileprivate func getParametersQuery() -> [String: Any]? {
