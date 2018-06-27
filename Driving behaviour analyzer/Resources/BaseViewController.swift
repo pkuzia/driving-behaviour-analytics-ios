@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class BaseViewController: UIViewController {
 
+    let baseViewModel = BaseViewModel()
+    
     // MARK: - View Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +30,18 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    // MARK: - Functions
+    
+    func showConnectionErrorAlert() {
+        let appearance = baseViewModel.getAlertAppearance()
+        
+        let alertColor = StyleKit.colorType(color: .connectionErrorColor)
+        let alert = SCLAlertView(appearance: appearance)
+        alert.showEdit(baseViewModel.offlineAlertTitle,
+                       subTitle: baseViewModel.offlineAlertSubtitle,
+                       closeButtonTitle: baseViewModel.offlineAlertButtonTitle, timeout: nil,
+                       colorStyle: alertColor.uInt, colorTextButton: UIColor.white.uInt)
+    }
 
 }

@@ -16,7 +16,7 @@ protocol CollectTableViewDriveDataViewModelDelegate: class {
 class CollectTableViewDriveDataViewModel: BaseViewModel {
     
     // MARK: - Strings
-    
+
     // MARK: - View Model Data
     
     let driveItemCellID = "driveItemCell"

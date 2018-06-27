@@ -6,6 +6,15 @@
   Copyright (c) 2017 Pkuzia. All rights reserved.
 */
 
+/* Base */
+
+"offline_alert_title" = "Connection error";
+"offline_alert_subtitle" = "The Internet connection appears to be offline.";
+"offline_alert_close_button_title" = "Close";
+
+"error_alert_title" = "Error";
+"error_alert_subtitle" = "Sorry, error occured";
+
 /* Menu Screen */
 
 "analyze_button_title" = "Analyze ride";
@@ -52,4 +61,10 @@
 "collect_calculated_table_view_data_header" = "Parameters";
 "collect_calculated_table_view_ratio_header" = "Ratio";
 "collect_calculated_table_view_env_header" = "Environment";
-"collect_calculated_csv_button_title" = "CSV";
+"collect_calculated_send_button_title" = "Send";
+
+"collect_calculated_send_info" = "Sending...";
+"collect_send_complete_title" = "Drive data";
+"collect_send_complete_subtitle" = "Uploaded successful";
+
+"classification_title" = "Classification result";

@@ -21,7 +21,7 @@ private func JSONResponseDataFormatter(_ data: Data) -> Data {
     }
 }
 
-let GitHubProvider = MoyaProvider<RestClient>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
+let APIProvider = MoyaProvider<RestClient>(plugins: [NetworkLoggerPlugin(verbose: true, responseDataFormatter: JSONResponseDataFormatter)])
 
 // MARK: - Provider support
 
@@ -33,6 +33,7 @@ private extension String {
 
 public enum RestClient {
     case classification(ClassificationRequest)
+    case saveCollectData(CollectDataRequest)
 }
 
 extension RestClient: TargetType {
@@ -42,17 +43,24 @@ extension RestClient: TargetType {
         switch self {
         case .classification:
             return "/zen"
+        case .saveCollectData:
+            return "/zen"
         }
     }
     
     public var method: Moya.Method {
-        return .get
+        switch self {
+            case .classification, .saveCollectData:
+            return .post
+        }
     }
     
     public var parameters: [String: Any]? {
         switch self {
         case .classification(let classificationRequest):
             return classificationRequest.getParameters()
+        case .saveCollectData(let saveCollectDataRequest):
+            return saveCollectDataRequest.getParameters()
         }
     }
     
@@ -66,7 +74,7 @@ extension RestClient: TargetType {
     
     public var validate: Bool {
         switch self {
-        case .classification:
+        case .classification, .saveCollectData:
             return true
         }
     }
