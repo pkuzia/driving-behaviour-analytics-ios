@@ -43,6 +43,9 @@
 		A8ADE81920C562CD007D0BE3 /* ParametersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8ADE81820C562CD007D0BE3 /* ParametersView.swift */; };
 		A8DBA1B220B2D74D00EFD49D /* DataGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBA1B120B2D74D00EFD49D /* DataGeneratorViewController.swift */; };
 		A8DBA1B420B2D76B00EFD49D /* DataGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DBA1B320B2D76B00EFD49D /* DataGeneratorViewModel.swift */; };
+		A8F11E1A20E126E5000B40AD /* ClassificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F11E1920E126E5000B40AD /* ClassificationService.swift */; };
+		A8F11E1C20E22FC2000B40AD /* ClassificationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F11E1B20E22FC2000B40AD /* ClassificationResponse.swift */; };
+		A8F11E2020E23111000B40AD /* CollectDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F11E1F20E23110000B40AD /* CollectDataRequest.swift */; };
 		BB6C33D196D5E180AC257D3F /* StoryboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3A881B67132743707E1167 /* StoryboardHelper.swift */; };
 		BB7262A79599BAF5D20AACCA /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = 6B16937B566C67FC7AD5C5E6 /* Localizable.strings */; };
 		D0208F0CE96D671FA33679F1 /* Pods_Driving_behaviour_analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529B1AC1C2C7876057000073 /* Pods_Driving_behaviour_analyzer.framework */; };
@@ -100,6 +103,9 @@
 		A8ADE81820C562CD007D0BE3 /* ParametersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersView.swift; sourceTree = "<group>"; };
 		A8DBA1B120B2D74D00EFD49D /* DataGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGeneratorViewController.swift; sourceTree = "<group>"; };
 		A8DBA1B320B2D76B00EFD49D /* DataGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGeneratorViewModel.swift; sourceTree = "<group>"; };
+		A8F11E1920E126E5000B40AD /* ClassificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationService.swift; sourceTree = "<group>"; };
+		A8F11E1B20E22FC2000B40AD /* ClassificationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassificationResponse.swift; sourceTree = "<group>"; };
+		A8F11E1F20E23110000B40AD /* CollectDataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectDataRequest.swift; sourceTree = "<group>"; };
 		AA3A881B67132743707E1167 /* StoryboardHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StoryboardHelper.swift; sourceTree = "<group>"; };
 		AB5AFF2662EBA9D32EB764E5 /* RestClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		BFCF244F7CB9BE76FAC7E171 /* .swiftlint.yml */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 			children = (
 				405D73C0CA131055616E424D /* BaseService.swift */,
 				971EA0FC1FF1140E000BE731 /* OBDIIService.swift */,
+				A8F11E1920E126E5000B40AD /* ClassificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -408,6 +415,7 @@
 		A8A794C820C94DA30003FA0C /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				A8F11E1F20E23110000B40AD /* CollectDataRequest.swift */,
 				A8A794CC20C94F410003FA0C /* BaseRequestModel.swift */,
 				A8A794CE20C94F4E0003FA0C /* ClassificationRequest.swift */,
 			);
@@ -418,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A794CA20C94F370003FA0C /* BaseResponseModel.swift */,
+				A8F11E1B20E22FC2000B40AD /* ClassificationResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -661,6 +670,7 @@
 				A8A794CB20C94F370003FA0C /* BaseResponseModel.swift in Sources */,
 				977AA6EF201F3D8400C8051E /* CalculatedDataHeader.swift in Sources */,
 				BB7262A79599BAF5D20AACCA /* Localizable.strings in Sources */,
+				A8F11E1A20E126E5000B40AD /* ClassificationService.swift in Sources */,
 				A8A794CD20C94F410003FA0C /* BaseRequestModel.swift in Sources */,
 				BB6C33D196D5E180AC257D3F /* StoryboardHelper.swift in Sources */,
 				A8DBA1B420B2D76B00EFD49D /* DataGeneratorViewModel.swift in Sources */,
@@ -672,6 +682,7 @@
 				67DDB6DE58DF0BC2EFE900EC /* BaseService.swift in Sources */,
 				97490854201E55E700C7D7D1 /* CollectDriveItemCell.swift in Sources */,
 				A5D2AB2E20AD75300037EE0A /* AnalyzeMapScreenViewModel.swift in Sources */,
+				A8F11E1C20E22FC2000B40AD /* ClassificationResponse.swift in Sources */,
 				977AA6ED201F3D5000C8051E /* CalculatedDataCell.swift in Sources */,
 				97E5EFED1FEC1A8E00358375 /* MenuScreenViewModel.swift in Sources */,
 				97E5EFEA1FEC1A6E00358375 /* MenuScreenViewController.swift in Sources */,
@@ -686,6 +697,7 @@
 				9563E667451E310C751AD8E5 /* BaseViewModel.swift in Sources */,
 				A8DBA1B220B2D74D00EFD49D /* DataGeneratorViewController.swift in Sources */,
 				A8A794CF20C94F4E0003FA0C /* ClassificationRequest.swift in Sources */,
+				A8F11E2020E23111000B40AD /* CollectDataRequest.swift in Sources */,
 				20E817BBC5C110F88916E16F /* BaseViewController.swift in Sources */,
 				974444C81FF2CF71002CE2BF /* CollectNavigationViewController.swift in Sources */,
 				FD558B599A4FD8D951AAEDB7 /* AppDelegate.swift in Sources */,

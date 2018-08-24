@@ -13,6 +13,10 @@ protocol CollectTableViewCalculatedViewModelDelegate: class {
     
 }
 
+enum WorkType {
+    case collect, analyze
+}
+
 class CollectTableViewCalculatedViewModel: BaseViewModel {
     
     // MARK: - Strings
@@ -22,17 +26,56 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
     let calculatedDataCellID = "calculatedDataCell"
     let calculatedDataHeaderID = "calculatedDataHeader"
     let screenTitle = "collect_calculated_table_view_title".localized
-    let csvButtonTitle = "collect_calculated_csv_button_title".localized
+    let sendButtonTitle = "collect_calculated_send_button_title".localized
+    let sendCollectionDataInfoLabel = "collect_calculated_send_info".localized
+    let classifyInfoLabel = "collect_classify_info".localized
+    let sendCompleteTitle = "collect_send_complete_title".localized
+    let sendCompleteSubtitle = "collect_send_complete_subtitle".localized
+    let classificationTitle = "classification_title".localized
     
     var driveItemData: [DriveItemData] = []
     var calculatedData: [CalculatedDriveItem] = []
     
+    fileprivate let classificationService = ClassificationService()
     let calculatedDataCellSize: CGFloat = 125
     let calculatedDataHeaderSize: CGFloat = 55
+    var workType: WorkType = .collect
     
     weak var delegate: CollectTableViewCalculatedViewModelDelegate?
+    var classificationResponse: ClassificationResponse?
+    
+    // MARK: - Requests
+    
+    func sendCollectedData(completionHandler: @escaping (FetchResult) -> ()) {
+        let collectDataRequest = CollectDataRequest(elements: convertDataToSVM())
+        classificationService.sendCollectedData(collectDataRequest: collectDataRequest, completionHandler: completionHandler)
+    }
+    
+    func classificationData(completionHandler: @escaping (FetchResult) -> ()) {
+        let classificationRequest = ClassificationRequest(elements: convertDataToSVM())
+        classificationService.classifyData(classificationRequest: classificationRequest) { result, classificationResponse in
+            if result.error != nil {
+                completionHandler(result)
+            } else {
+                if let classificationResponse = classificationResponse {
+                    self.classificationResponse = classificationResponse
+                    completionHandler(FetchResult(error: nil))
+                } else {
+                    completionHandler(FetchResult(error: .unknownError))
+                }
+            }
+        }
+    }
     
     // MARK: - Functions
+    
+    func classificationResult() -> String {
+        // TODO: Maping 
+        if let classificationResponse = classificationResponse {
+            return classificationResponse.classificaton
+        }
+        return ""
+    }
     
     func processData(completionHandler: (_ complete: Bool) -> ()) {
         fetchData { complete in
@@ -58,7 +101,7 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         }
     }
     
-    func convertDataToCSV() -> String {
+    func convertDataToSVM() -> String {
         var engineSpeedRangeInvalid = 0
         var vehicleSpeedRangeUpInvalid = 0
         var vehicleSpeedRangeDownInvalid = 0
@@ -144,7 +187,10 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
             fuelRailPressureExceededAverage = fuelRailPressureExceeded / fuelRailPressureRangeInvalid.float
         }
         
-        return "\(driveStyle.rawValue), 1:\(engineSpeedRangeInvalidParam), 2:\(vehicleSpeedRangeInvalidParam), 3:\(vehicleEngineSpeedRangeInvalidParam), 4:\(engineLoadRangeInvalidParam), 5:\(fuelRailPressureRangeInvalidParam), 6:\(vehicleSpeedUpExceededAverage), 7:\(vehicleSpeedDownExceededAverage), 8:\(engineSpeedExceededAverage), 9:\(fuelRailPressureExceededAverage) \n \(dataListCSV)"
+        return "\(driveStyle.rawValue), 1:\(engineSpeedRangeInvalidParam), 2:\(vehicleSpeedRangeInvalidParam), 3:\(vehicleEngineSpeedRangeInvalidParam), 4:\(engineLoadRangeInvalidParam), 5:\(fuelRailPressureRangeInvalidParam), 6:\(vehicleSpeedUpExceededAverage), 7:\(vehicleSpeedDownExceededAverage), 8:\(engineSpeedExceededAverage), 9:\(fuelRailPressureExceededAverage)"
+
+        // Option with sending with full drive history
+//        return "\(driveStyle.rawValue), 1:\(engineSpeedRangeInvalidParam), 2:\(vehicleSpeedRangeInvalidParam), 3:\(vehicleEngineSpeedRangeInvalidParam), 4:\(engineLoadRangeInvalidParam), 5:\(fuelRailPressureRangeInvalidParam), 6:\(vehicleSpeedUpExceededAverage), 7:\(vehicleSpeedDownExceededAverage), 8:\(engineSpeedExceededAverage), 9:\(fuelRailPressureExceededAverage) \n \(dataListCSV)"
     }
     
     fileprivate func appendDriveItemData(item: DriveItemData, index: Int) {

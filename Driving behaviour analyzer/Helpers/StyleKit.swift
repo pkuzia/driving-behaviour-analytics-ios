@@ -15,7 +15,7 @@ public enum Attribute {
 }
 
 public enum Color {
-    case baseBlueColor, baseGreenColor, baseGrayColor, baseBlueDarkColor, analyzeStartColor, analyzeStopColor, baseLightBlueColor
+    case baseBlueColor, baseGreenColor, baseGrayColor, baseBlueDarkColor, analyzeStartColor, analyzeStopColor, baseLightBlueColor, connectionErrorColor
 }
 
 
@@ -68,6 +68,8 @@ class StyleKit {
             return UIColor.green
         case .analyzeStopColor:
             return UIColor.red
+        case .connectionErrorColor:
+            return UIColor.gray
         }
     }
 

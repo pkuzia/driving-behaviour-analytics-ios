@@ -9,6 +9,8 @@
 import UIKit
 import SwifterSwift
 import MessageUI
+import SwiftSpinner
+import SCLAlertView
 
 class CollectTableViewCalculatedViewController: BaseViewController {
     
@@ -60,9 +62,9 @@ class CollectTableViewCalculatedViewController: BaseViewController {
         navigationController?.view.backgroundColor = .clear
         
         let csvButton = UIButton(type: .custom)
-        csvButton.titleForNormal = collectTableViewCalculatedViewModel.csvButtonTitle
+        csvButton.titleForNormal = collectTableViewCalculatedViewModel.sendButtonTitle
 //        csvButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        csvButton.addTarget(self, action: #selector(clickCSVButtonHandler), for: .touchUpInside)
+        csvButton.addTarget(self, action: #selector(clickSendButtonHandler), for: .touchUpInside)
         let rightItems = UIBarButtonItem(customView: csvButton)
         
         self.navigationItem.setRightBarButtonItems([rightItems], animated: true)
@@ -70,19 +72,65 @@ class CollectTableViewCalculatedViewController: BaseViewController {
     
     // MARK: - User Interaction
     
-    func clickCSVButtonHandler() {
-        let CSV = collectTableViewCalculatedViewModel.convertDataToCSV()
-        let mailVC = MFMailComposeViewController()
-        mailVC.mailComposeDelegate = self
-        mailVC.setToRecipients([])
-        mailVC.setSubject("Driving Behavior analyzer CSV")
-        mailVC.setMessageBody(CSV, isHTML: false)
-
-        present(mailVC, animated: true, completion: nil)
+    func clickSendButtonHandler() {
+        switch collectTableViewCalculatedViewModel.workType {
+        case .analyze:
+            analyzeData()
+        case .collect:
+            sendCollectionData()
+        }
     }
     
     // MARK: - Additional Helpers
     
+    fileprivate func sendCollectionData() {
+        SwiftSpinner.show(collectTableViewCalculatedViewModel.sendCollectionDataInfoLabel)
+        collectTableViewCalculatedViewModel.sendCollectedData { result in
+            SwiftSpinner.hide()
+            if let error = result.error {
+                self.handleApiError(error: error)
+            } else {
+                self.showSuccessSendAlert()
+            }
+        }
+    }
+    
+    fileprivate func analyzeData() {
+        SwiftSpinner.show(collectTableViewCalculatedViewModel.sendCollectionDataInfoLabel)
+        collectTableViewCalculatedViewModel.classificationData { result in
+            SwiftSpinner.hide()
+            if let error = result.error {
+                self.handleApiError(error: error)
+            } else {
+                self.showClassificationResult()
+            }
+        }
+    }
+    
+    fileprivate func showClassificationResult() {
+        SCLAlertView().showInfo(collectTableViewCalculatedViewModel.classificationTitle,
+                                subTitle: collectTableViewCalculatedViewModel.classificationResult())
+    }
+    
+    fileprivate func showSuccessSendAlert() {
+        SCLAlertView().showInfo(collectTableViewCalculatedViewModel.sendCompleteTitle,
+                                subTitle: collectTableViewCalculatedViewModel.sendCompleteSubtitle)
+    }
+    
+    fileprivate func showErrorAlert() {
+        SCLAlertView().showError(collectTableViewCalculatedViewModel.errorTitle,
+                                 subTitle: collectTableViewCalculatedViewModel.errorSubtitle)
+    }
+    
+    fileprivate func handleApiError(error: FetchError) {
+        SwiftSpinner.hide()
+        switch error {
+        case .connectionError:
+            showConnectionErrorAlert()
+        default:
+            showErrorAlert()
+        }
+    }
 }
 
 // MARK: - CollectTableViewCalculatedViewModelDelegate

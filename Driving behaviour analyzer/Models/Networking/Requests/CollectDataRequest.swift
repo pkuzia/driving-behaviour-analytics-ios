@@ -1,5 +1,5 @@
 //
-//  ClassificationRequest.swift
+//  CollectDataRequest.swift
 //  Driving behaviour analyzer
 //
 //  Created by Przemysław Kuzia on 14.09.2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class ClassificationRequest: BaseRequestModel {
+public class CollectDataRequest: BaseRequestModel {
     
     var elements: String
     
