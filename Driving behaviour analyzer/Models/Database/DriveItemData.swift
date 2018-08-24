@@ -27,6 +27,10 @@ enum DriveStyle: Int {
     case undefined = 3
     
     static let dataTypes = [soft, optimal, hard]
+    
+    static func random() -> DriveStyle {
+        return dataTypes.randomItem
+    }
 }
 
 class DriveItemData: Object {

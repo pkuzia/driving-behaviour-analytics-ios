@@ -181,14 +181,21 @@ class DataGeneratorViewModel: BaseViewModel {
     func generateData() -> String {
         let loop = 10000
         var CSV = ""
-        for _ in 0...loop {
+        var randomize = false
+        for index in 0...loop {
+            if index%10 == 0 {
+                randomize = true
+            }
             switch lastGenerated {
             case .soft:
-                CSV += generateStyleData(driveStyle: .optimal)
+                CSV += generateStyleData(driveStyle: .optimal, randomize: randomize)
+                randomize = false
             case .optimal:
-                CSV += generateStyleData(driveStyle: .hard)
+                CSV += generateStyleData(driveStyle: .hard, randomize: randomize)
+                randomize = false
             case .hard:
-                CSV += generateStyleData(driveStyle: .soft)
+                CSV += generateStyleData(driveStyle: .soft, randomize: randomize)
+                randomize = false
             default:
                 break
             }
@@ -196,9 +203,14 @@ class DataGeneratorViewModel: BaseViewModel {
         return CSV
     }
     
-    func generateStyleData(driveStyle: DriveStyle) -> String {
+    func generateStyleData(driveStyle: DriveStyle, randomize: Bool) -> String {
         lastGenerated = driveStyle
-        return "\(driveStyle.rawValue) 1:\(engineSpeed(driveStyle: driveStyle)) 2:\(vehicleSpeed(driveStyle: driveStyle)) 3:\(vehicleEngineSpeed(driveStyle: driveStyle)) 4:\(engineLoad(driveStyle: driveStyle)) 5:\(fuelRailPressure(driveStyle: driveStyle)) 6:\(vehicleSpeedUpExceeded(driveStyle: driveStyle)) 7:\(vehicleSpeedDownExceeded(driveStyle: driveStyle)) 8:\(engineSpeedExceeded(driveStyle: driveStyle)) 9:\(fuelRailPressureExceeded(driveStyle: driveStyle)) \n"
+        var csvDriveStyle = driveStyle
+        if randomize {
+            csvDriveStyle = DriveStyle.random()
+            print("Randomize from \(driveStyle) to \(csvDriveStyle)")
+        }
+        return "\(csvDriveStyle.rawValue) 1:\(engineSpeed(driveStyle: driveStyle)) 2:\(vehicleSpeed(driveStyle: driveStyle)) 3:\(vehicleEngineSpeed(driveStyle: driveStyle)) 4:\(engineLoad(driveStyle: driveStyle)) 5:\(fuelRailPressure(driveStyle: driveStyle)) 6:\(vehicleSpeedUpExceeded(driveStyle: driveStyle)) 7:\(vehicleSpeedDownExceeded(driveStyle: driveStyle)) 8:\(engineSpeedExceeded(driveStyle: driveStyle)) 9:\(fuelRailPressureExceeded(driveStyle: driveStyle)) \n"
     }
     
     fileprivate func randomValueBeetween(firstNum: Double, secondNum: Double) -> String {

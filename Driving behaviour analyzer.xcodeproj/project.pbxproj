@@ -513,7 +513,7 @@
 				ORGANIZATIONNAME = Pkuzia;
 				TargetAttributes = {
 					C57D5CC3B2483D2B54C71C0F = {
-						DevelopmentTeam = C6P2EMH7KR;
+						DevelopmentTeam = E2KG6LTEW8;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -803,7 +803,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = C6P2EMH7KR;
+				DEVELOPMENT_TEAM = E2KG6LTEW8;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Driving behaviour analyzer/Resources/Info.plist";
@@ -811,8 +811,8 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobile.iterato.rs.Driving behaviour analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "267fdae2-f152-45e9-bfa3-a2aca94b22ea";
-				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Profile";
+				PROVISIONING_PROFILE = "e9f0d12d-e004-41e6-b3e1-4f70b024ad9a";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -848,7 +848,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C6P2EMH7KR;
+				DEVELOPMENT_TEAM = E2KG6LTEW8;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
@@ -857,8 +857,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "mobile.iterato.rs.Driving behaviour analyzer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "267fdae2-f152-45e9-bfa3-a2aca94b22ea";
-				PROVISIONING_PROFILE_SPECIFIER = "XC Wildcard Profile";
+				PROVISIONING_PROFILE = "e9f0d12d-e004-41e6-b3e1-4f70b024ad9a";
+				PROVISIONING_PROFILE_SPECIFIER = Development;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

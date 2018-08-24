@@ -178,27 +178,17 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         }
     }
     
-    fileprivate func calculateDeltaValues() -> (maxDeltaRPM: Float, maxDeltaVehicleSpeed: Float) {
-        var maxDeltaRPM = 0
-        var maxDeltaVehicleSpeed = 0
-        
+    fileprivate func calculateDeltaValues() {
         var index = 1
         while let currentItem = calculatedData.item(at: index), let previousItem = calculatedData.item(at: index - 1) {
             let currentDeltaRPM = currentItem.engineSpeed - previousItem.engineSpeed
             currentItem.engineSpeedDelta = currentDeltaRPM
-            if currentDeltaRPM > maxDeltaRPM {
-                maxDeltaRPM = currentDeltaRPM
-            }
             
             let currentVehicleSpeed = currentItem.vehicleSpeed - previousItem.vehicleSpeed
             currentItem.vehicleSpeedDelta = currentVehicleSpeed
-            if currentVehicleSpeed > maxDeltaVehicleSpeed {
-                maxDeltaVehicleSpeed = currentVehicleSpeed
-            }
             currentItem.calculateRangeOfValues()
             index += 1
         }
-        return (maxDeltaRPM: maxDeltaRPM.float, maxDeltaVehicleSpeed: maxDeltaVehicleSpeed.float)
     }
 }
 
