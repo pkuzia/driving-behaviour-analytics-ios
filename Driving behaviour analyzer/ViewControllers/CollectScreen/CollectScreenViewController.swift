@@ -115,7 +115,6 @@ class CollectScreenViewController: BaseViewController {
     }
     
     fileprivate func showConnectAlert() {
-        //TODO: Change color
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )

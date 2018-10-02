@@ -63,7 +63,6 @@ class CollectTableViewCalculatedViewController: BaseViewController {
         
         let csvButton = UIButton(type: .custom)
         csvButton.titleForNormal = collectTableViewCalculatedViewModel.sendButtonTitle
-//        csvButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         csvButton.addTarget(self, action: #selector(clickSendButtonHandler), for: .touchUpInside)
         let rightItems = UIBarButtonItem(customView: csvButton)
         

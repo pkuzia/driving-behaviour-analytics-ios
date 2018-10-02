@@ -60,13 +60,13 @@ class MenuScreenViewController: BaseViewController {
     }
     
     @IBAction func clickAnalyzeButtonHandler(_ sender: Any) {
-//        let storyboard = UIStoryboard(storyboard: .Analyze)
-//        let analyzeMapNavigationController: AnalyzeMapNavigationController = storyboard.instantiateViewController()
-//        self.present(analyzeMapNavigationController, animated: true, completion: nil)
-        
         let storyboard = UIStoryboard(storyboard: .Analyze)
-        let dataGeneratorViewController: DataGeneratorViewController = storyboard.instantiateViewController()
-        self.present(dataGeneratorViewController, animated: true, completion: nil)
+        let analyzeMapNavigationController: AnalyzeMapNavigationController = storyboard.instantiateViewController()
+        self.present(analyzeMapNavigationController, animated: true, completion: nil)
+        
+//        let storyboard = UIStoryboard(storyboard: .Analyze)
+//        let dataGeneratorViewController: DataGeneratorViewController = storyboard.instantiateViewController()
+//        self.present(dataGeneratorViewController, animated: true, completion: nil)
     }
     
     // MARK: - Additional Helpers

@@ -108,27 +108,26 @@ class AnalyzeMapScreenViewController: BaseViewController {
     }
     
     @IBAction func actionButtonClicked(_ sender: Any) {
-        goToCalculatedData()
-//        switch analyzeMapScreenViewModel.analyzeState {
-//        case .idle:
-//            analyzeMapScreenViewModel.analyzeState = .connected
-//            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.startButtonTitle)
-//            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStartColor)
-//        case .connected:
-//            analyzeMapScreenViewModel.analyzeState = .drive
-//            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.stopButtonTitle)
-//            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStopColor)
-//            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
-//        case .drive:
-//            analyzeMapScreenViewModel.analyzeState = .stopped
-//            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.startButtonTitle)
-//            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStartColor)
-//            timer.invalidate()
-//        case .stopped:
-//            analyzeMapScreenViewModel.analyzeState = .connected
-//            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.startButtonTitle)
-//            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStartColor)
-//        }
+        switch analyzeMapScreenViewModel.analyzeState {
+        case .idle:
+            analyzeMapScreenViewModel.analyzeState = .connected
+            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.startButtonTitle)
+            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStartColor)
+        case .connected:
+            analyzeMapScreenViewModel.analyzeState = .drive
+            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.stopButtonTitle)
+            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStopColor)
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(counter), userInfo: nil, repeats: true)
+        case .drive:
+            analyzeMapScreenViewModel.analyzeState = .stopped
+            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.startButtonTitle)
+            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStartColor)
+            timer.invalidate()
+        case .stopped:
+            analyzeMapScreenViewModel.analyzeState = .connected
+            actionButton.setTitleForAllStates(analyzeMapScreenViewModel.startButtonTitle)
+            actionButton.backgroundColor = StyleKit.colorType(color: .analyzeStartColor)
+        }
     }
     
     // MARK: - Additional Helpers

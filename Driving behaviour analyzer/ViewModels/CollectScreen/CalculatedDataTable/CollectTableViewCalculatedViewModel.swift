@@ -70,7 +70,6 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
     // MARK: - Functions
     
     func classificationResult() -> String {
-        // TODO: Maping 
         if let classificationResponse = classificationResponse {
             return classificationResponse.classificaton
         }
@@ -217,7 +216,6 @@ class CollectTableViewCalculatedViewModel: BaseViewModel {
         if let vehicleSpeed = vehicleSpeed, let engineSpeed = engineSpeed, let engineLoad = engineLoad, let fuelRailPressure = fuelRailPressure {
             let calculatedDriveItem = CalculatedDriveItem(engineSpeed: engineSpeed.int, vehicleSpeed: vehicleSpeed.int, engineLoad: engineLoad,
                                                           fuelRailPressure: fuelRailPressure.int, timestamp: item.timestamp, position: (lat: item.lat, lng: item.lng), driveStyle: item.driveStyleEnum)
-            //TODO: Mock
             calculatedDriveItem.calculateVehicleEngineSpeedRatio(maxVehicleSpeed: 180, maxRPM: 4500)
             calculatedDriveItem.calculateFuelRailPressureRatio(baseFuelRailPressure: 26000)
             calculatedData.append(calculatedDriveItem)
